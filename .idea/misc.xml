@@ -3,7 +3,35 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/PC/AndroidStudioProjects/QRCode/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_favorite.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_history.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_qr_code.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_qr_code_scanner.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_settings.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable/background_camera.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable/ic_close.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/bottom_dialog.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/fragment_create.xml" value="0.2" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/fragment_favorite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/fragment_history.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/fragment_scan.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/layout/fragment_setting.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2265" />
+        <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2265" />
+        <entry key="..\:/bottom_menu/app/src/main/res/drawable-v24/ic_baseline_favorite_24.xml" value="0.2725" />
+        <entry key="..\:/bottom_menu/app/src/main/res/drawable/background_camera.xml" value="0.3355" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/bottom_dialog.xml" value="0.22" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_create.xml" value="0.35260416666666666" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_favorite.xml" value="0.35260416666666666" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_history.xml" value="0.36666666666666664" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
+        <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_setting.xml" value="0.36666666666666664" />
+        <entry key="..\:/bottom_menu/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

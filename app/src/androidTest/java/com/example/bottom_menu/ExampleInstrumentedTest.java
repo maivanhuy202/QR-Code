@@ -1,4 +1,4 @@
-package com.example.qrcode;
+package com.example.bottom_menu;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.qrcode", appContext.getPackageName());
+        assertEquals("com.example.bottom_menu", appContext.getPackageName());
     }
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Create"
+        android:id="@+id/Create"
+        android:icon="@drawable/ic_qr_code"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="History"
+        android:id="@+id/History"
+        android:icon="@drawable/ic_history"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Scan"
+        android:id="@+id/Scan"
+        android:icon="@drawable/ic_qr_code_scanner"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Favorite"
+        android:id="@+id/Favorite"
+        android:icon="@drawable/ic_favorite"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="Settings"
+        android:id="@+id/Settings"
+        android:icon="@drawable/ic_settings"
+        app:showAsAction="ifRoom"/>
+</menu>

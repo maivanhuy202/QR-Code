@@ -1,4 +1,4 @@
-package com.example.qrcode;
+package com.example.bottom_menu;
 
 import org.junit.Test;
 
