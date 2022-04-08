@@ -190,6 +190,7 @@ public class ScanFragment extends Fragment {
 
         private void readerBarcodeData(List<Barcode> barcodes) {
             for (Barcode barcode : barcodes) {
+
                 Rect bounds = barcode.getBoundingBox();
                 Point[] corners = barcode.getCornerPoints();
 
@@ -211,6 +212,9 @@ public class ScanFragment extends Fragment {
                         String title = barcode.getUrl().getTitle();
                         String url = barcode.getUrl().getUrl();
                         break;
+                    case Barcode.TYPE_TEXT:
+                        String txt = barcode.getRawValue();
+
                 }
             }
         }
