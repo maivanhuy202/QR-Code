@@ -42,7 +42,8 @@
             android:layout_height="90dp"
             android:layout_gravity="center"
             android:foregroundGravity="center"
-            android:src="@drawable/ic_text2" />
+            android:src="@drawable/email"
+             />
 
         <TextView
             android:layout_width="327dp"
@@ -50,23 +51,56 @@
             android:layout_gravity="center"
             android:background="#79797C"
             android:gravity="center"
-            android:text="Text"
+            android:text="Email"
             android:textColor="@color/black"
             android:textSize="50dp" />
 
     </LinearLayout>
+
     <EditText
+        android:id="@+id/toEmail"
+        android:layout_width="344dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/liner"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="20dp"
+        android:background="#D8D8DA"
         android:gravity="left|top"
-        android:id="@+id/enterText"
+
+        android:hint="  To"
+        android:textSize="25dp" />
+    <EditText
+        android:id="@+id/subject"
+        android:layout_width="344dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/liner"
+        android:layout_marginLeft="35dp"
+        android:layout_marginTop="65dp"
+        android:background="#D8D8DA"
+        android:gravity="left|top"
+        android:hint="  Enter subject"
+        android:textSize="25dp" />
+    <EditText
+        android:id="@+id/message"
         android:layout_width="344dp"
         android:layout_height="177dp"
         android:layout_below="@+id/liner"
         android:layout_marginLeft="35dp"
+        android:layout_marginTop="112dp"
         android:background="#D8D8DA"
-        android:hint="Enter text to create QR Code"
+        android:gravity="left|top"
+        android:hint="Enter your message"
         android:textSize="25dp" />
 
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textColor="#FF1100"
+        android:textSize="20dp"
+        android:layout_marginLeft="385dp"
+        android:layout_marginTop="209dp"
+        />
 
 
 </RelativeLayout>

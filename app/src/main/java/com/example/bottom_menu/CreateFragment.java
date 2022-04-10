@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 public class CreateFragment extends Fragment {
 
@@ -20,15 +21,26 @@ public class CreateFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       tableLayout = (TableLayout) container.findViewById(R.id.tablelayout);
-       imgContact  = (ImageView) container.findViewById(R.id.logoContact);
-       imgMessage  = (ImageView)  container.findViewById(R.id.logoMessage);
-       imgEmail    =(ImageView)  container.findViewById(R.id.logoEmail);
-       imgPhoneNumber = (ImageView)  container.findViewById(R.id.logoPhoneNumber);
-       imgUrl = (ImageView) container.findViewById(R.id.logoUrl);
-       imgText = (ImageView) container.findViewById(R.id.logoText);
-        return inflater.inflate(R.layout.fragment_create, container, false);
+        View view = inflater.inflate(R.layout.fragment_create, container, false);
+
+        tableLayout = (TableLayout) view.findViewById(R.id.tablelayout);
+       imgContact  =  view.findViewById(R.id.logoContact);
+       imgMessage  =   view.findViewById(R.id.logoMessage);
+       imgEmail    =  view.findViewById(R.id.logoEmail);
+       imgPhoneNumber =  view.findViewById(R.id.logoPhoneNumber);
+       imgUrl = view.findViewById(R.id.logoUrl);
+       imgText = view.findViewById(R.id.logoText);
+       imgText.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+           }
+       });
+        return view;
     }
+
+
+
 
 
 

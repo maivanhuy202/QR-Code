@@ -42,7 +42,7 @@
             android:layout_height="90dp"
             android:layout_gravity="center"
             android:foregroundGravity="center"
-            android:src="@drawable/ic_text2" />
+            android:src="@drawable/ic_url" />
 
         <TextView
             android:layout_width="327dp"
@@ -50,20 +50,20 @@
             android:layout_gravity="center"
             android:background="#79797C"
             android:gravity="center"
-            android:text="Text"
+            android:text="URL"
             android:textColor="@color/black"
             android:textSize="50dp" />
 
     </LinearLayout>
     <EditText
         android:gravity="left|top"
-        android:id="@+id/enterText"
+        android:id="@+id/editTextURL"
         android:layout_width="344dp"
         android:layout_height="177dp"
         android:layout_below="@+id/liner"
         android:layout_marginLeft="35dp"
         android:background="#D8D8DA"
-        android:hint="Enter text to create QR Code"
+        android:hint="Enter the url to create QR code"
         android:textSize="25dp" />
 
 
