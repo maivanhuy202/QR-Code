@@ -16,18 +16,18 @@
         android:layout_marginStart="2dp"
         android:layout_marginBottom="680dp"
         app:srcCompat="@drawable/ic_close" />
+
     <ImageView
         android:id="@+id/btnYes"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_yes"
-        android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="360dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="680dp"
-        />
+        app:srcCompat="@drawable/ic_yes" />
 
     <LinearLayout
         android:layout_width="500dp"
@@ -55,14 +55,15 @@
             android:textSize="50dp" />
 
     </LinearLayout>
+
     <EditText
-        android:gravity="left|top"
         android:id="@+id/enterText"
         android:layout_width="344dp"
         android:layout_height="177dp"
         android:layout_below="@+id/liner"
         android:layout_marginLeft="35dp"
         android:background="#D8D8DA"
+        android:gravity="left|top"
         android:hint="Enter text to create QR Code"
         android:textSize="25dp" />
 

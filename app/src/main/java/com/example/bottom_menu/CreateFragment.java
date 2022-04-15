@@ -3,6 +3,8 @@ package com.example.bottom_menu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ public class CreateFragment extends Fragment {
 
     ImageView imgContact, imgMessage, imgUrl, imgPhoneNumber, imgText, imgEmail;
     TableLayout tableLayout;
+    CreateQrText createQrText = new CreateQrText();
 
 
     @Override
@@ -33,6 +36,10 @@ public class CreateFragment extends Fragment {
        imgText.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               FragmentManager fragmentManager = getParentFragmentManager();
+               FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+               fragmentTransaction.add(R.id.create_fragment,createQrText);
+               fragmentTransaction.commit();
 
            }
        });
