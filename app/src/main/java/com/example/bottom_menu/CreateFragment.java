@@ -19,8 +19,7 @@ public class CreateFragment extends Fragment {
     ImageView imgContact, imgMessage, imgUrl, imgPhoneNumber, imgText, imgEmail;
     TableLayout tableLayout;
     CreateQrText createQrText = new CreateQrText();
-
-
+    CreateQrUrl createQrUrl = new CreateQrUrl();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -38,9 +37,16 @@ public class CreateFragment extends Fragment {
            public void onClick(View view) {
                FragmentManager fragmentManager = getParentFragmentManager();
                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-               fragmentTransaction.add(R.id.create_fragment,createQrText);
-               fragmentTransaction.commit();
+               fragmentTransaction.replace(R.id.container,createQrText).commit();
 
+           }
+       });
+       imgUrl.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               FragmentManager fragmentManager = getParentFragmentManager();
+               FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+               fragmentTransaction.replace(R.id.container,createQrUrl).commit();
            }
        });
         return view;
