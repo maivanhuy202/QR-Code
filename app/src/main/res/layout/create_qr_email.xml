@@ -8,26 +8,14 @@
 
 
     <ImageView
-        android:id="@+id/btnClose"
+        android:id="@+id/btnArrowBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="680dp"
-        app:srcCompat="@drawable/ic_close" />
-    <ImageView
-        android:id="@+id/btnYes"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_yes"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="360dp"
-        android:layout_marginBottom="680dp"
-        />
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="9dp"
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <LinearLayout
         android:layout_width="500dp"
@@ -60,33 +48,48 @@
     <EditText
         android:id="@+id/toEmail"
         android:layout_width="344dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@+id/liner"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
+        android:layout_marginEnd="35dp"
         android:layout_marginTop="20dp"
         android:background="#D8D8DA"
         android:gravity="left|top"
 
         android:hint="  To"
         android:textSize="25dp" />
+
     <EditText
         android:id="@+id/subject"
         android:layout_width="344dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@+id/liner"
+
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="75dp"
         android:background="#D8D8DA"
         android:gravity="left|top"
         android:hint="  Enter subject"
         android:textSize="25dp" />
+
     <EditText
-        android:id="@+id/message"
+        android:id="@+id/EditTextMessage"
         android:layout_width="344dp"
         android:layout_height="177dp"
         android:layout_below="@+id/liner"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="130dp"
         android:background="#D8D8DA"
         android:gravity="left|top"
         android:hint="Enter your message"
@@ -101,6 +104,18 @@
         android:layout_marginLeft="385dp"
         android:layout_marginTop="209dp"
         />
+    <Button
+        android:id="@+id/btnGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/EditTextMessage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="120dp"
+        android:background="#8624C1"
+        android:text="Generate" />
 
 
 </RelativeLayout>

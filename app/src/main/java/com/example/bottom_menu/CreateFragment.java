@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TableLayout;
-import android.widget.Toast;
+
 
 public class CreateFragment extends Fragment {
 
@@ -20,11 +20,14 @@ public class CreateFragment extends Fragment {
     TableLayout tableLayout;
     CreateQrText createQrText = new CreateQrText();
     CreateQrUrl createQrUrl = new CreateQrUrl();
+    CreateQrPhoneNumber createQrPhoneNumber = new CreateQrPhoneNumber();
+    CreateQrMessage createQrMessage = new CreateQrMessage();
+    CreateQrEmail createQrEmail = new CreateQrEmail();
+    CreateQrContact createQrContact = new CreateQrContact();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create, container, false);
-
         tableLayout = (TableLayout) view.findViewById(R.id.tablelayout);
        imgContact  =  view.findViewById(R.id.logoContact);
        imgMessage  =   view.findViewById(R.id.logoMessage);
@@ -32,22 +35,37 @@ public class CreateFragment extends Fragment {
        imgPhoneNumber =  view.findViewById(R.id.logoPhoneNumber);
        imgUrl = view.findViewById(R.id.logoUrl);
        imgText = view.findViewById(R.id.logoText);
-       imgText.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               FragmentManager fragmentManager = getParentFragmentManager();
-               FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-               fragmentTransaction.replace(R.id.container,createQrText).commit();
 
-           }
+       imgText.setOnClickListener(view14 -> {
+           FragmentManager fragmentManager = getParentFragmentManager();
+           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.replace(R.id.container,createQrText).addToBackStack(null).commit();
+
        });
-       imgUrl.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               FragmentManager fragmentManager = getParentFragmentManager();
-               FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-               fragmentTransaction.replace(R.id.container,createQrUrl).commit();
-           }
+       imgUrl.setOnClickListener(view13 -> {
+           FragmentManager fragmentManager = getParentFragmentManager();
+           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.replace(R.id.container,createQrUrl).addToBackStack(null).commit();
+       });
+       imgPhoneNumber.setOnClickListener(view12 -> {
+           FragmentManager fragmentManager = getParentFragmentManager();
+           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.replace(R.id.container,createQrPhoneNumber).addToBackStack(null).commit();
+       });
+       imgMessage.setOnClickListener(view1 -> {
+           FragmentManager fragmentManager = getParentFragmentManager();
+           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.replace(R.id.container,createQrMessage).addToBackStack(null).commit();
+       });
+       imgEmail.setOnClickListener(view1 -> {
+           FragmentManager fragmentManager = getParentFragmentManager();
+           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.replace(R.id.container,createQrEmail).addToBackStack(null).commit();
+       });
+       imgContact.setOnClickListener(view1 -> {
+           FragmentManager fragmentManager = getParentFragmentManager();
+           FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+           fragmentTransaction.replace(R.id.container,createQrContact).addToBackStack(null).commit();
        });
         return view;
     }

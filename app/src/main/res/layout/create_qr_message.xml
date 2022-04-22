@@ -2,37 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".FavoriteFragment">
 
 
     <ImageView
-        android:id="@+id/btnClose"
+        android:id="@+id/btnArrowBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="680dp"
-        app:srcCompat="@drawable/ic_close" />
-    <ImageView
-        android:id="@+id/btnYes"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_yes"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="360dp"
-        android:layout_marginBottom="680dp"
-        />
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="9dp"
+        app:srcCompat="@drawable/ic_arrow_back" />
 
     <LinearLayout
         android:layout_width="500dp"
         android:layout_height="120dp"
-        android:layout_marginTop="60dp"
+        android:layout_below="@+id/btnArrowBack"
+        android:layout_marginTop="0dp"
         android:id="@+id/liner"
         android:orientation="horizontal">
 
@@ -53,17 +42,22 @@
             android:gravity="center"
             android:text="Message"
             android:textColor="@color/black"
-            android:textSize="50dp" />
+            android:textSize="40dp" />
 
     </LinearLayout>
 
     <EditText
-        android:id="@+id/lineTextTo"
+        android:id="@+id/editTextTo"
         android:layout_width="344dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_below="@+id/liner"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
         android:layout_marginTop="20dp"
+
+        android:layout_marginEnd="35dp"
         android:background="#D8D8DA"
         android:gravity="left|top"
 
@@ -71,12 +65,16 @@
         android:textSize="25dp" />
 
     <EditText
-        android:id="@+id/message"
+        android:id="@+id/editTextMessage"
         android:layout_width="344dp"
         android:layout_height="177dp"
         android:layout_below="@+id/liner"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
         android:layout_marginLeft="35dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginTop="75dp"
         android:background="#D8D8DA"
         android:gravity="left|top"
         android:hint="Enter your message"
@@ -91,6 +89,18 @@
         android:layout_marginLeft="385dp"
         android:layout_marginTop="209dp"
         />
+    <Button
+        android:id="@+id/btnGenerate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editTextMessage"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="39dp"
+        android:layout_marginEnd="120dp"
+        android:background="#8624C1"
+        android:text="Generate" />
 
 
 </RelativeLayout>
