@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 
@@ -17,7 +18,8 @@ public class CreateFragment extends Fragment {
 
 
     ImageView imgContact, imgMessage, imgUrl, imgPhoneNumber, imgText, imgEmail;
-    TableLayout tableLayout;
+    GridLayout gridLayout;
+
     CreateQrText createQrText = new CreateQrText();
     CreateQrUrl createQrUrl = new CreateQrUrl();
     CreateQrPhoneNumber createQrPhoneNumber = new CreateQrPhoneNumber();
@@ -28,7 +30,7 @@ public class CreateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_create, container, false);
-        tableLayout = (TableLayout) view.findViewById(R.id.tablelayout);
+        gridLayout = (GridLayout) view.findViewById(R.id.gridLayout);
        imgContact  =  view.findViewById(R.id.logoContact);
        imgMessage  =   view.findViewById(R.id.logoMessage);
        imgEmail    =  view.findViewById(R.id.logoEmail);

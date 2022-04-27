@@ -17,168 +17,175 @@
         android:background="@drawable/rectangle_1" />
 
 
-    <TableLayout
-        android:id="@+id/tablelayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="70dp">
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="550dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="95dp"
+        android:columnCount="3"
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
 
+        android:useDefaultMargins="true"
+
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:gravity="center"
+
+            android:orientation="vertical">
             <ImageView
-
                 android:id="@+id/logoContact"
-                android:layout_width="154dp"
-                android:layout_height="108dp"
-                android:src="@drawable/z3321524528276_ce5ae85cdc982391c90f13f92aa3a276" />
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:src="@drawable/ic_contact" />
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:background="#8624C1"
+                android:textColor="@color/white"
+                android:text="Contact"
+                android:textSize="20sp" />
+        </LinearLayout>
 
+        <TextView
+            android:layout_height="100dp"
+            android:layout_width="15dp"
+            />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:gravity="center"
+
+            android:orientation="vertical">
             <ImageView
                 android:id="@+id/logoEmail"
-                android:layout_width="154dp"
-                android:layout_height="100dp"
-                android:src="@drawable/z3321524525568_333a06f0bc9e3ff8817efe6d91274a3e" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:background="@color/white"
+                android:src="@drawable/email" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#8624C1"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Contact"
+                android:background="#8624C1"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:background="#8624C1"
-                android:gravity="center"
                 android:text="Email"
-                android:textColor="@color/white"
                 android:textSize="20sp" />
+        </LinearLayout>
 
 
-        </TableRow>
 
-        <TableRow
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="170dp"
+            android:gravity="center"
 
-            <TextView android:textSize="30sp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
+            android:orientation="vertical">
             <ImageView
-
+                android:layout_width="150dp"
                 android:id="@+id/logoMessage"
-                android:layout_width="154dp"
-                android:layout_height="108dp"
-                android:src="@drawable/z3321524514043_77ae26e8352aec8f4c536bf4f387f4d2" />
-
-            <ImageView
-                android:id="@+id/logoUrl"
-                android:layout_width="154dp"
-                android:layout_height="108dp"
-                android:src="@drawable/z3321524512138_b5e4140a0b47ff1c77406e63a6f77e32" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
+                android:background="@color/white"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_message" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#8624C1"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:gravity="center"
+                android:background="#8624C1"
+                android:textColor="@color/white"
                 android:text="Message"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+        </LinearLayout>
+        <TextView
+            android:layout_height="100dp"
+            android:layout_width="15dp"
+            />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:gravity="center"
+
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="150dp"
+                android:id="@+id/logoUrl"
+                android:background="@color/white"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_url" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="#8624C1"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:gravity="center"
+                android:background="#8624C1"
+                android:textColor="@color/white"
                 android:text="URL"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+        </LinearLayout>
 
-
-        </TableRow>
-
-        <TableRow
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView android:textSize="30dp" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
+            android:layout_height="170dp"
+            android:gravity="center"
+            android:orientation="vertical">
             <ImageView
-
+                android:layout_width="150dp"
                 android:id="@+id/logoText"
-                android:layout_width="154dp"
-                android:layout_height="108dp"
-                android:src="@drawable/z3321524511231_0f8b4d96453f178031712ce0f75b3223" />
-
-            <ImageView
-                android:id="@+id/logoPhoneNumber"
-                android:layout_width="154dp"
-                android:layout_height="108dp"
-                android:src="@drawable/z3321524512134_e31afb10cb51a2de01c71156898d89d4" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
+                android:background="@color/white"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_text" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#8624C1"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:gravity="center"
+                android:background="#8624C1"
+                android:textColor="@color/white"
                 android:text="Text"
-                android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+        </LinearLayout>
+        <TextView
+            android:layout_height="100dp"
+            android:layout_width="15dp"
+            />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="170dp"
+            android:gravity="center"
 
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="150dp"
+                android:id="@+id/logoPhoneNumber"
+                android:background="@color/white"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_phonenumber" />
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="#8624C1"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:gravity="center"
-                android:text="Phone Number"
+                android:background="#8624C1"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:text="Phone Number"
+                android:textSize="20sp" />
+        </LinearLayout>
 
-
-        </TableRow>
-
-
-    </TableLayout>
+    </GridLayout>
 
 
 </RelativeLayout>
