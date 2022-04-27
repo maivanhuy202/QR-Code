@@ -19,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class bottom_dialog extends BottomSheetDialogFragment {
+public class resultUrl extends BottomSheetDialogFragment {
 
     private TextView title, link, btn_visit;
     private ImageView close;
@@ -28,7 +28,7 @@ public class bottom_dialog extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.bottom_dialog, container, false);
+        View view = inflater.inflate(R.layout.result_url, container, false);
 
         title = view.findViewById(R.id.txt_title);
         link = view.findViewById(R.id.txt_link);
@@ -37,19 +37,34 @@ public class bottom_dialog extends BottomSheetDialogFragment {
 
         title.setText(fetchUrl);
 
-        btn_visit.setOnClickListener(view12 -> {
-            Intent intent = new Intent("android.intent.action.VIEW");
-            intent.setData(Uri.parse(fetchUrl));
-            startActivity(intent);
+        btn_visit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("android.intent.action.VIEW");
+                intent.setData(Uri.parse(fetchUrl));
+                startActivity(intent);
+            }
         });
 
-        close.setOnClickListener(view1 -> dismiss());
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dismiss();
+            }
+        });
+
+
         return view;
     }
 
     public void fetchUrl(String url) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
-        executorService.execute(() -> fetchUrl = url);
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                fetchUrl = url;
+            }
+        });
     }
 }

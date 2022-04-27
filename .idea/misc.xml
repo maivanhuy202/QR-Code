@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/rectangle_1.xml" value="0.158" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/bottom_dialog.xml" value="0.4" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/fragment_create.xml" value="0.264" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_generator.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_favorite.xml" value="0.2265" />
         <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_history.xml" value="0.2265" />
         <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2265" />
@@ -41,6 +45,10 @@
         <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_scan.xml" value="0.33" />
         <entry key="..\:/bottom_menu/app/src/main/res/layout/fragment_setting.xml" value="0.36666666666666664" />
         <entry key="..\:/bottom_menu/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/bottom_menu_Huy/QR-Code/app/src/main/res/drawable/ic_photo_library.xml" value="0.1695" />
+        <entry key="..\:/bottom_menu_Huy/QR-Code/app/src/main/res/layout/fragment_create.xml" value="0.24259259259259258" />
+        <entry key="..\:/bottom_menu_Huy/QR-Code/app/src/main/res/layout/fragment_scan.xml" value="0.36666666666666664" />
+        <entry key="..\:/bottom_menu_Huy/QR-Code/app/src/main/res/layout/result_url.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

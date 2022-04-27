@@ -9,24 +9,53 @@
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="650dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center">
 
         <androidx.camera.view.PreviewView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/previewView" />
+            android:id="@+id/previewView" >
+        </androidx.camera.view.PreviewView>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <ImageView
+                android:id="@+id/image"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_centerInParent="true"
-                android:layout_centerHorizontal="true"
-                android:id="@+id/image"
-                android:src="@drawable/background_camera"/>
+                android:src="@drawable/background_camera" />
+
+            <ImageView
+                android:id="@+id/btn_flash_on"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_flash_on"
+                android:layout_below="@+id/image"
+                android:layout_alignStart="@+id/image"
+                android:layout_marginTop="30dp" />
+
+            <ImageView
+                android:id="@+id/btn_flash_off"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_flash_off"
+                android:layout_below="@+id/image"
+                android:layout_alignStart="@+id/image"
+                android:layout_marginTop="30dp"
+                android:visibility="gone"/>
+
+            <ImageView
+                android:id="@+id/btn_gallery"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_photo_library"
+                android:layout_below="@+id/image"
+                android:layout_alignEnd="@+id/image"
+                android:layout_marginTop="30dp"/>
         </RelativeLayout>
 
     </FrameLayout>
