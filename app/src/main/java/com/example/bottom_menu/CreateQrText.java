@@ -3,6 +3,8 @@ package com.example.bottom_menu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +13,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
+
 public class CreateQrText extends Fragment {
 
     ImageView close;
     Button apply;
     EditText editText;
+    ResultCreate resultCreate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,6 +38,24 @@ public class CreateQrText extends Fragment {
                 getActivity().getSupportFragmentManager().popBackStackImmediate();
             }
         });
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String txt = editText.getText().toString().trim();
+                MultiFormatWriter writer = new MultiFormatWriter();
+                try {
+                    BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
+                    resultCreate = new ResultCreate(matrix);
+                    FragmentManager fragmentManager = getParentFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
+                } catch (WriterException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
 
         return view;
     }
