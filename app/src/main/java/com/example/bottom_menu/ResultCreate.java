@@ -24,10 +24,11 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Objects;
 
 public class ResultCreate extends Fragment {
     ImageView result;
-    ImageView share, save, copy;
+    ImageView share, save, copy, close;
     BitMatrix bitMatrix;
     public ResultCreate(BitMatrix bitMatrix){
         this.bitMatrix = bitMatrix;
@@ -40,9 +41,11 @@ public class ResultCreate extends Fragment {
         save = view.findViewById(R.id.btn_save);
         copy = view.findViewById(R.id.btn_copy);
         result = view.findViewById(R.id.imgResult);
+        close = view.findViewById(R.id.btnArrowBack);
         BarcodeEncoder encoder = new BarcodeEncoder();
         Bitmap bitmap = encoder.createBitmap(bitMatrix);
         result.setImageBitmap(bitmap);
+
         copy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,34 +58,33 @@ public class ResultCreate extends Fragment {
 
             }
         });
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                StrictMode.VmPolicy.Builder builder = new  StrictMode.VmPolicy.Builder();
-                StrictMode.setVmPolicy(builder.build());
+        share.setOnClickListener(view1 -> {
+            StrictMode.VmPolicy.Builder builder = new  StrictMode.VmPolicy.Builder();
+            StrictMode.setVmPolicy(builder.build());
 
-                File f = new File(getActivity().getExternalCacheDir() + "/" + getResources().getString(R.string.app_name) + ".png");
-                Intent intent;
+            File f = new File(requireActivity().getExternalCacheDir() + "/" + getResources().getString(R.string.app_name) + ".png");
+            Intent intent;
 
-                try {
-                    FileOutputStream outputStream = new FileOutputStream(f);
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
+            try {
+                FileOutputStream outputStream = new FileOutputStream(f);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
 
-                    outputStream.flush();
-                    outputStream.close();
-                    intent = new Intent(Intent.ACTION_SEND);
-                    intent.setType("image/*");
-                    intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                outputStream.flush();
+                outputStream.close();
+                intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("image/*");
+                intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(f));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
 
-                }catch (Exception e){
-                    throw new RuntimeException(e);
-                }
-
-                startActivity(Intent.createChooser(intent,"share image"));
+            }catch (Exception e){
+                throw new RuntimeException(e);
             }
+
+            startActivity(Intent.createChooser(intent,"share image"));
         });
+
+        close.setOnClickListener(view12 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
         return view;
     }
 

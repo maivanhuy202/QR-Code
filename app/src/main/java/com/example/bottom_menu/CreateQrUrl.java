@@ -31,27 +31,24 @@ public class CreateQrUrl extends Fragment {
         close = (ImageView) view.findViewById(R.id.btnArrowBack);
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editUrl = view.findViewById(R.id.editTextURL);
-        close.setOnClickListener(view1 -> getActivity().getSupportFragmentManager().popBackStackImmediate());
+        close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
 
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txt = editUrl.getText().toString().trim();
-                MultiFormatWriter writer = new MultiFormatWriter();
-                try {
-                    BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
-                    resultCreate = new ResultCreate(matrix);
+        apply.setOnClickListener(view12 -> {
+            String txt = editUrl.getText().toString().trim();
+            MultiFormatWriter writer = new MultiFormatWriter();
+            try {
+                BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
+                resultCreate = new ResultCreate(matrix);
 
-                    FragmentManager fragmentManager = getParentFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
 
 
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
-
+            } catch (WriterException e) {
+                e.printStackTrace();
             }
+
         });
 
 

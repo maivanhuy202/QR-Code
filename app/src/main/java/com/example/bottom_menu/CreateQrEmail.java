@@ -24,17 +24,11 @@ public class CreateQrEmail extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_qr_email, container, false);
         close = (ImageView) view.findViewById(R.id.btnArrowBack);
-        Fragment me = this;
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editTo = view.findViewById(R.id.toEmail);
         editMessage = view.findViewById(R.id.EditTextMessage);
         editSubject = view.findViewById(R.id.subject);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
-            }
-        });
+        close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
 
         return view;
     }

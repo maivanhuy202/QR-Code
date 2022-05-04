@@ -201,11 +201,11 @@ public class ScanFragment extends Fragment {
 
     public static class MyImageAnalyzer implements ImageAnalysis.Analyzer {
         private final FragmentManager fragmentManager;
-        private final resultUrl bd;
+        private final resultUrl resultUrl;
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
-            bd = new resultUrl();
+            resultUrl = new resultUrl();
         }
 
         @Override
@@ -254,10 +254,10 @@ public class ScanFragment extends Fragment {
                         int type = barcode.getWifi().getEncryptionType();
                         break;
                     case Barcode.TYPE_URL:
-                        if (!bd.isAdded()) {
-                            bd.show(fragmentManager, "URL BARCODE SCANNED");
+                        if (!resultUrl.isAdded()) {
+                            resultUrl.show(fragmentManager, "URL BARCODE SCANNED");
                         }
-                        bd.fetchUrl(Objects.requireNonNull(barcode.getUrl()).getUrl());
+                        resultUrl.fetchUrl(Objects.requireNonNull(barcode.getUrl()).getUrl());
                         break;
                     case Barcode.TYPE_CALENDAR_EVENT:
                         break;

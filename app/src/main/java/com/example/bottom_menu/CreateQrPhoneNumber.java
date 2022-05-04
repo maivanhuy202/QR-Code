@@ -1,6 +1,5 @@
 package com.example.bottom_menu;
 
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,31 +32,24 @@ public class CreateQrPhoneNumber extends Fragment {
         close = (ImageView) view.findViewById(R.id.btnArrowBack);
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editPN = view.findViewById(R.id.editTextPhoneNumber);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
+
+        close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
+
+        apply.setOnClickListener(view12 -> {
+            String txt = editPN.getText().toString().trim();
+            MultiFormatWriter writer = new MultiFormatWriter();
+            try {
+                BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
+                resultCreate = new ResultCreate(matrix);
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
+
+
+            } catch (WriterException e) {
+                e.printStackTrace();
             }
-        });
 
-        apply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String txt = editPN.getText().toString().trim();
-                MultiFormatWriter writer = new MultiFormatWriter();
-                try {
-                    BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
-                    resultCreate = new ResultCreate(matrix);
-                    FragmentManager fragmentManager = getParentFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
-
-
-                } catch (WriterException e) {
-                    e.printStackTrace();
-                }
-
-            }
         });
 
 

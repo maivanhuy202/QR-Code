@@ -37,21 +37,13 @@ public class resultUrl extends BottomSheetDialogFragment {
 
         title.setText(fetchUrl);
 
-        btn_visit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent("android.intent.action.VIEW");
-                intent.setData(Uri.parse(fetchUrl));
-                startActivity(intent);
-            }
+        btn_visit.setOnClickListener(view1 -> {
+            Intent intent = new Intent("android.intent.action.VIEW");
+            intent.setData(Uri.parse(fetchUrl));
+            startActivity(intent);
         });
 
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        close.setOnClickListener(view12 -> dismiss());
 
 
         return view;
@@ -60,11 +52,6 @@ public class resultUrl extends BottomSheetDialogFragment {
     public void fetchUrl(String url) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
-        executorService.execute(new Runnable() {
-            @Override
-            public void run() {
-                fetchUrl = url;
-            }
-        });
+        executorService.execute(() -> fetchUrl = url);
     }
 }

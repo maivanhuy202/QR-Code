@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import androidx.fragment.app.Fragment;
 
+
 public class CreateQrContact  extends Fragment {
 
     ImageView close;
@@ -28,7 +29,6 @@ public class CreateQrContact  extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_qr_contact, container, false);
         close = (ImageView) view.findViewById(R.id.btnArrowBack);
-        Fragment me = this;
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         btnImport = view.findViewById(R.id.btnImport);
         editTextFirstName = view.findViewById(R.id.editTextFirstName);
@@ -37,12 +37,8 @@ public class CreateQrContact  extends Fragment {
         editTextCompany = view.findViewById(R.id.editTextCompany);
         editTextPhoneNumber = view.findViewById(R.id.editTextPhoneNumber);
         editTextEmail = view.findViewById(R.id.editTextEmail);
-        close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                getActivity().getSupportFragmentManager().popBackStackImmediate();
-            }
-        });
+
+        close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
 
         return view;
     }
