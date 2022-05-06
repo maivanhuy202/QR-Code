@@ -1,13 +1,16 @@
 package com.example.bottom_menu;
 
+import static android.widget.Toast.LENGTH_SHORT;
 import static androidx.core.content.ContextCompat.getSystemService;
 
+import android.Manifest;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +18,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
@@ -42,6 +47,7 @@ public class ResultCreate extends Fragment {
         copy = view.findViewById(R.id.btn_copy);
         result = view.findViewById(R.id.imgResult);
         close = view.findViewById(R.id.btnArrowBack);
+
         BarcodeEncoder encoder = new BarcodeEncoder();
         Bitmap bitmap = encoder.createBitmap(bitMatrix);
         result.setImageBitmap(bitmap);
@@ -55,8 +61,26 @@ public class ResultCreate extends Fragment {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String root = Environment.getExternalStorageDirectory().getAbsolutePath();
+                File file = new File(root + "/Pictures");
+                String fileName =  "qr_code.png";
+                File myfile = new File(file, fileName);
+                if (myfile.exists()){
+                    myfile.delete();
+                }
+                try{
+                    FileOutputStream fileOutputStream = new FileOutputStream(myfile);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
+                    fileOutputStream.flush();
+                    fileOutputStream.close();
+
+                } catch(Exception e){
+
+                }
 
             }
+
+
         });
         share.setOnClickListener(view1 -> {
             StrictMode.VmPolicy.Builder builder = new  StrictMode.VmPolicy.Builder();
