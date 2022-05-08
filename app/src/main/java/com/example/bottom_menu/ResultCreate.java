@@ -1,27 +1,26 @@
 package com.example.bottom_menu;
 
-import static android.widget.Toast.LENGTH_SHORT;
-import static androidx.core.content.ContextCompat.getSystemService;
-
 import android.Manifest;
-import android.content.ClipboardManager;
-import android.content.Context;
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.zxing.common.BitMatrix;
@@ -29,15 +28,17 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.Objects;
 
+@SuppressWarnings("ALL")
 public class ResultCreate extends Fragment {
     ImageView result;
     ImageView share, save, copy, close;
     BitMatrix bitMatrix;
-    public ResultCreate(BitMatrix bitMatrix){
-        this.bitMatrix = bitMatrix;
-    }
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,32 +53,32 @@ public class ResultCreate extends Fragment {
         Bitmap bitmap = encoder.createBitmap(bitMatrix);
         result.setImageBitmap(bitmap);
 
-        copy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        copy.setOnClickListener(view13 -> {
 
-            }
         });
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String root = Environment.getExternalStorageDirectory().getAbsolutePath();
-                File file = new File(root + "/Pictures");
-                String fileName =  "qr_code.png";
-                File myfile = new File(file, fileName);
-                if (myfile.exists()){
-                    myfile.delete();
+        save.setOnClickListener(view14 -> {
+            ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            try {
+                if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != (PackageManager.PERMISSION_GRANTED)) {
+                    ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                    Toast.makeText(requireActivity(), "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
+                }else {
+                    OutputStream fos;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
+                        ContentResolver resolver = requireContext().getContentResolver();
+                        ContentValues contentValues = new ContentValues();
+                        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "Image" + ".jpg");
+                        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg");
+                        Uri imageUri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+                        fos = resolver.openOutputStream(imageUri);
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+                        Objects.requireNonNull(fos);
+                    }
+                    Toast.makeText(requireActivity(), "Save successfully", Toast.LENGTH_LONG).show();
+
                 }
-                try{
-                    FileOutputStream fileOutputStream = new FileOutputStream(myfile);
-                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, fileOutputStream);
-                    fileOutputStream.flush();
-                    fileOutputStream.close();
-
-                } catch(Exception e){
-
-                }
-
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
 
@@ -112,4 +113,17 @@ public class ResultCreate extends Fragment {
         return view;
     }
 
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, int[] grantResults) {
+        if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Log.e("value", "Permission Granted, Now you can use local drive .");
+        } else {
+            Log.e("value", "Permission Denied, You cannot use local drive .");
+        }
+    }
+
+    public ResultCreate(BitMatrix bitMatrix){
+        this.bitMatrix = bitMatrix;
+    }
 }

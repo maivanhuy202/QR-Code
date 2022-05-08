@@ -202,10 +202,12 @@ public class ScanFragment extends Fragment {
     public static class MyImageAnalyzer implements ImageAnalysis.Analyzer {
         private final FragmentManager fragmentManager;
         private final resultUrl resultUrl;
+        private final resultText resultText;
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
             resultUrl = new resultUrl();
+            resultText = new resultText();
         }
 
         @Override
@@ -268,6 +270,10 @@ public class ScanFragment extends Fragment {
                         break;
                     case Barcode.TYPE_TEXT:
                         String text = barcode.getDisplayValue();
+                        if (!resultText.isAdded()) {
+                            resultText.show(fragmentManager,"QR TEXT SCANNED");
+                        }
+                        resultText.fetchText(text);
                         break;
                 }
             }

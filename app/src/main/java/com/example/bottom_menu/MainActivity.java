@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         getSupportFragmentManager().beginTransaction().replace(R.id.container, scanFragment).commit(); //set the begin fragment to scan
         bottomNavigationView.setSelectedItemId(R.id.Scan); //set the begin tab to scan
-        ActivityCompat.requestPermissions(MainActivity.this , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
-        ActivityCompat.requestPermissions(MainActivity.this , new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
