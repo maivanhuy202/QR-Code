@@ -48,7 +48,7 @@ public class ResultCreate extends Fragment {
         copy = view.findViewById(R.id.btn_copy);
         result = view.findViewById(R.id.imgResult);
         close = view.findViewById(R.id.btnArrowBack);
-
+        ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         BarcodeEncoder encoder = new BarcodeEncoder();
         Bitmap bitmap = encoder.createBitmap(bitMatrix);
         result.setImageBitmap(bitmap);
@@ -57,7 +57,7 @@ public class ResultCreate extends Fragment {
 
         });
         save.setOnClickListener(view14 -> {
-            ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            //ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             try {
                 if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != (PackageManager.PERMISSION_GRANTED)) {
                     ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
@@ -106,7 +106,7 @@ public class ResultCreate extends Fragment {
                 throw new RuntimeException(e);
             }
 
-            startActivity(Intent.createChooser(intent,"share image"));
+            startActivity(Intent.createChooser(intent,"share"));
         });
 
         close.setOnClickListener(view12 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());

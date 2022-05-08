@@ -3,19 +3,30 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1765" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable-v24/ic_qr_code.xml" value="0.1765" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/background.xml" value="0.1765" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/background_button_corner_1.xml" value="0.1765" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/background_button_corner_2.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/background_camera.xml" value="0.1" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/background_circle.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_arrow_back.xml" value="0.158" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_baseline_content_copy_24.xml" value="0.176" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_browser.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_close.xml" value="0.176" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_flash_off.xml" value="0.176" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_flash_on.xml" value="0.176" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_history_create.xml" value="0.199" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_link.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_photo_library.xml" value="0.176" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_share.xml" value="0.158" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_share_white.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/obligatory.xml" value="0.176" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/rectangle_1.xml" value="0.158" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/temp.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/bottom_dialog.xml" value="0.4" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/create_qr_contact.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/create_qr_email.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/create_qr_message.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/create_qr_phonenumber.xml" value="0.25416666666666665" />
@@ -25,6 +36,7 @@
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_message.xml" value="0.2" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_text.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_url.xml" value="0.264" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/temp.xml" value="0.264" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_favorite.xml" value="0.2265" />
         <entry key="..\:/Users/PC/Desktop/bottom_menu/app/src/main/res/drawable-v24/ic_history.xml" value="0.2265" />
