@@ -28,7 +28,7 @@ public class CreateQrUrl extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_qr_url, container, false);
-        close = (ImageView) view.findViewById(R.id.btnArrowBack);
+        close = (ImageView) view.findViewById(R.id.btn_ArrowBack);
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editUrl = view.findViewById(R.id.editTextURL);
         close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());

@@ -21,7 +21,7 @@
     <RelativeLayout
         android:id="@+id/frame_show"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btn_ArrowBack"
         android:layout_marginStart="26dp"
         android:layout_marginTop="26dp"
@@ -35,12 +35,12 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="65dp"
-            android:text="QR URL"
-            android:textSize="18dp"
+            android:text="QR EMAIL"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_subject"
+            android:id="@+id/txt_address"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +48,35 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:text="url_link_result"
+            android:text="ADDRESS"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_subject"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_address"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="SUBJECT"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txt_body"
+            style="@style/Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_subject"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal"
+            android:text="BODY"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -57,11 +85,11 @@
             android:id="@+id/btn_copy"
             android:layout_width="192dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_subject"
+            android:layout_below="@id/txt_body"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="#8624C1"
-            android:text="Copy link"
+            android:text="Copy"
             android:textColor="#FFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -74,22 +102,22 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/btn_call"
+                android:id="@+id/btn_send"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_browser" />
+                android:src="@drawable/ic_send" />
 
             <TextView
                 android:id="@+id/tv_open_browser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_call"
-                android:layout_alignStart="@id/btn_call"
-                android:layout_alignEnd="@id/btn_call"
+                android:layout_below="@id/btn_send"
+                android:layout_alignStart="@id/btn_send"
+                android:layout_alignEnd="@id/btn_send"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="Open browser"
+                android:text="Send"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -100,9 +128,14 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="100dp"
-                android:layout_toEndOf="@id/btn_call"
+                android:layout_toEndOf="@id/btn_send"
                 android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_share_white"/>
+                android:insetTop="0dp"
+
+                android:insetBottom="0dp"
+                android:src="@drawable/ic_share_white"
+
+                app:iconPadding="0dp" />
 
             <TextView
                 android:id="@+id/tv_share"
@@ -119,7 +152,6 @@
                 android:textStyle="bold" />
 
         </RelativeLayout>
-
     </RelativeLayout>
 
     <ImageView
@@ -131,5 +163,5 @@
         android:layout_marginBottom="-80dp"
         android:background="@drawable/background_circle"
         android:padding="20dp"
-        android:src="@drawable/ic_link" />
+        android:src="@drawable/ic_email" />
 </RelativeLayout>

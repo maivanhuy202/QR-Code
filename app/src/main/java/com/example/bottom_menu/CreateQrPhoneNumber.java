@@ -29,7 +29,7 @@ public class CreateQrPhoneNumber extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_qr_phonenumber, container, false);
-        close = (ImageView) view.findViewById(R.id.btnArrowBack);
+        close = (ImageView) view.findViewById(R.id.btn_ArrowBack);
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editPN = view.findViewById(R.id.editTextPhoneNumber);
 

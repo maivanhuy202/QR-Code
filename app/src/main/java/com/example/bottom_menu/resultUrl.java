@@ -25,34 +25,29 @@ import java.util.concurrent.Executors;
 public class resultUrl extends BottomSheetDialogFragment {
 
     private TextView title;
-    private ImageView close,btnBrowser, btnShare;;
     private String fetchUrl;
-    private Button btnCopy;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_url, container, false);
 
-        title = view.findViewById(R.id.txt_url_result);
+        title = view.findViewById(R.id.txt_subject);
 
-        btnCopy = view.findViewById(R.id.btn_copy);
-        btnBrowser = view.findViewById(R.id.btn_open_browser);
-        close = view.findViewById(R.id.btnArrowBack);
-        btnShare = view.findViewById(R.id.btn_share);
+        Button btnCopy = view.findViewById(R.id.btn_copy);
+        ImageView btnBrowser = view.findViewById(R.id.btn_call);
+        ImageView close = view.findViewById(R.id.btn_ArrowBack);
+        ImageView btnShare = view.findViewById(R.id.btn_share);
         title.setText(fetchUrl);
 
-        btnShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent myIntent = new Intent(Intent.ACTION_SEND);
-                myIntent.setType("text/plain");
-                String body = title.getText().toString().trim();
-                String sub = "";
-                myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-                myIntent.putExtra(Intent.EXTRA_TEXT,body);
-                startActivity(Intent.createChooser(myIntent, "Share"));
-            }
+        btnShare.setOnClickListener(view13 -> {
+            Intent myIntent = new Intent(Intent.ACTION_SEND);
+            myIntent.setType("text/plain");
+            String body = title.getText().toString().trim();
+            String sub = "";
+            myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
+            myIntent.putExtra(Intent.EXTRA_TEXT,body);
+            startActivity(Intent.createChooser(myIntent, "Share"));
         });
 
         btnCopy.setOnClickListener(view1 -> {

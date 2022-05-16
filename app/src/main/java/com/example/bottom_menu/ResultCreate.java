@@ -9,7 +9,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -28,7 +27,6 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Objects;
 
@@ -47,7 +45,7 @@ public class ResultCreate extends Fragment {
         save = view.findViewById(R.id.btn_save);
         copy = view.findViewById(R.id.btn_copy);
         result = view.findViewById(R.id.imgResult);
-        close = view.findViewById(R.id.btnArrowBack);
+        close = view.findViewById(R.id.btn_ArrowBack);
         ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         BarcodeEncoder encoder = new BarcodeEncoder();
         Bitmap bitmap = encoder.createBitmap(bitMatrix);
@@ -63,6 +61,7 @@ public class ResultCreate extends Fragment {
                     ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                     Toast.makeText(requireActivity(), "Write External Storage permission allows us to do store images. Please allow this permission in App Settings.", Toast.LENGTH_LONG).show();
                 }else {
+
                     OutputStream fos;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q){
                         ContentResolver resolver = requireContext().getContentResolver();

@@ -2,6 +2,7 @@ package com.example.bottom_menu;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,38 +21,51 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultText extends BottomSheetDialogFragment {
-    private String fetchText;
-
+public class resultMessage extends BottomSheetDialogFragment {
+    private String fetchPhoneNum, fetchMessage;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.result_text, container, false);
+        View view = inflater.inflate(R.layout.result_message, container, false);
 
 
-        TextView title = view.findViewById(R.id.txt_subject);
+        TextView message = view.findViewById(R.id.txt_subject);
+        TextView phoneNum = view.findViewById(R.id.txt_address);
         TextView btn_copy = view.findViewById(R.id.btn_copy);
         ImageView close = view.findViewById(R.id.btn_ArrowBack);
         ImageView btnShare = view.findViewById(R.id.btn_share);
-        title.setText(fetchText);
+        ImageView btnSend = view.findViewById(R.id.btn_send);
+
+        phoneNum.setText(fetchPhoneNum);
+        message.setText(fetchMessage);
 
         btn_copy.setOnClickListener(view1 -> {
             int sdk = android.os.Build.VERSION.SDK_INT;
             if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(title.getText());
+                clipboard.setText( phoneNum.getText().toString() + " " + message.getText().toString());
             } else {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(null,title.getText());
+                android.content.ClipData clip = android.content.ClipData.newPlainText(null,phoneNum.getText().toString() + " " +message.getText().toString());
                 clipboard.setPrimaryClip(clip);
             }
             Toast.makeText(requireContext(), "Text copied into clipboard",Toast.LENGTH_LONG).show();
         });
 
+        btnSend.setOnClickListener(view14 -> {
+            String smsNumber = phoneNum.getText().toString();
+            String smsText = message.getText().toString();
+
+            Uri uri = Uri.parse("smsto:" + smsNumber);
+            Intent intent = new Intent(Intent.ACTION_SENDTO, uri);
+            intent.putExtra("sms_body", smsText);
+            startActivity(intent);
+        });
+
         btnShare.setOnClickListener(view13 -> {
             Intent myIntent = new Intent(Intent.ACTION_SEND);
             myIntent.setType("text/plain");
-            String body = title.getText().toString().trim();
+            String body = phoneNum.getText().toString().trim() + " " + message.getText().toString().trim();
             String sub = "";
             myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
             myIntent.putExtra(Intent.EXTRA_TEXT,body);
@@ -62,9 +76,10 @@ public class resultText extends BottomSheetDialogFragment {
 
         return view;
     }
-    public void fetchText(String text) {
+    public void fetch(String phoneNum, String message) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
-        executorService.execute(() -> fetchText = text);
+        executorService.execute(() -> fetchPhoneNum = phoneNum);
+        executorService.execute(() -> fetchMessage = message);
     }
 }

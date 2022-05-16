@@ -28,7 +28,7 @@ public class CreateQrText extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_qr_text, container, false);
-        close = (ImageView) view.findViewById(R.id.btnArrowBack);
+        close = (ImageView) view.findViewById(R.id.btn_ArrowBack);
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editText = view.findViewById(R.id.enterText);
         close.setOnClickListener(view12 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());

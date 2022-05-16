@@ -11,7 +11,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
         <ImageView
-            android:id="@+id/btnArrowBack"
+            android:id="@+id/btn_ArrowBack"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_alignParentStart="true"

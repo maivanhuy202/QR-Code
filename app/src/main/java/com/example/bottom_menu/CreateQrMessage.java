@@ -31,7 +31,7 @@ public class CreateQrMessage  extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.create_qr_message, container, false);
-        close = (ImageView) view.findViewById(R.id.btnArrowBack);
+        close = (ImageView) view.findViewById(R.id.btn_ArrowBack);
         apply = (Button)  view.findViewById(R.id.btnGenerate);
         editPN = view.findViewById(R.id.editTextTo);
         editMessage = view.findViewById(R.id.editTextMessage);

@@ -56,7 +56,8 @@ public class ScanFragment extends Fragment {
     private ExecutorService cameraExecutor;
     public PreviewView previewView;
     private MyImageAnalyzer analyzer;
-    private ImageView btnFlashOn, btnFlashOff, btnPhotoGallery;
+    private ImageView btnFlashOn;
+    private ImageView btnFlashOff;
     private boolean lightOn = false;
 
     @SuppressWarnings("deprecation")
@@ -75,7 +76,7 @@ public class ScanFragment extends Fragment {
         btnFlashOff.setClickable(false);
         btnFlashOff.setVisibility(View.GONE);
 
-        btnPhotoGallery = view.findViewById(R.id.btn_gallery);
+        ImageView btnPhotoGallery = view.findViewById(R.id.btn_gallery);
         btnPhotoGallery.setOnClickListener(view1 -> startActivityForResult(new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI), GET_FROM_GALLERY));
 
         cameraExecutor = Executors.newSingleThreadExecutor();
@@ -203,11 +204,17 @@ public class ScanFragment extends Fragment {
         private final FragmentManager fragmentManager;
         private final resultUrl resultUrl;
         private final resultText resultText;
+        private final resultMessage resultMessage;
+        private final resultPhoneNumber resultPhoneNumber;
+        private final resultEmail resultEmail;
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
             resultUrl = new resultUrl();
             resultText = new resultText();
+            resultMessage = new resultMessage();
+            resultPhoneNumber = new resultPhoneNumber();
+            resultEmail = new resultEmail();
         }
 
         @Override
@@ -267,6 +274,10 @@ public class ScanFragment extends Fragment {
                         String address = Objects.requireNonNull(barcode.getEmail()).getAddress();
                         String subject= barcode.getEmail().getSubject();
                         String body = barcode.getEmail().getBody();
+                        if (!resultEmail.isAdded()) {
+                            resultEmail.show(fragmentManager, "QR EMAIL SCANNED");
+                        }
+                        resultEmail.fetch(address, subject, body);
                         break;
                     case Barcode.TYPE_TEXT:
                         String text = barcode.getDisplayValue();
@@ -275,6 +286,22 @@ public class ScanFragment extends Fragment {
                         }
                         resultText.fetchText(text);
                         break;
+                    case Barcode.TYPE_SMS:
+                        String phoneNumber = Objects.requireNonNull(barcode.getSms()).getPhoneNumber();
+                        String message = barcode.getSms().getMessage();
+                        if(!resultMessage.isAdded()) {
+                            resultMessage.show(fragmentManager, "QR MESSAGE SCANNED");
+                        }
+                        resultMessage.fetch(phoneNumber, message);
+                        break;
+                    case Barcode.TYPE_PHONE:
+                        String phoneNum = Objects.requireNonNull(barcode.getPhone()).getNumber();
+                        if (!resultPhoneNumber.isAdded()){
+                            resultPhoneNumber.show(fragmentManager,"QR PHONE SCANNED");
+                        }
+                        resultPhoneNumber.fetch(phoneNum);
+                        break;
+
                 }
             }
         }

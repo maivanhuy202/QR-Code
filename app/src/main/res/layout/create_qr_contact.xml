@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/btnArrowBack"
+        android:id="@+id/btn_ArrowBack"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
@@ -20,7 +20,7 @@
     <LinearLayout
         android:layout_width="500dp"
         android:layout_height="120dp"
-        android:layout_below="@+id/btnArrowBack"
+        android:layout_below="@+id/btn_ArrowBack"
         android:layout_marginTop="-10dp"
         android:id="@+id/liner"
         android:orientation="horizontal">

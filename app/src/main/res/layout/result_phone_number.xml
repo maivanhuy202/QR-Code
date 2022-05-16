@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="65dp"
-            android:text="QR URL"
+            android:text="QR PHONE NUMBER"
             android:textSize="18dp"
             android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:text="url_link_result"
+            android:text="url_phone_number"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -61,7 +61,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="#8624C1"
-            android:text="Copy link"
+            android:text="Copy"
             android:textColor="#FFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -78,7 +78,7 @@
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_browser" />
+                android:src="@drawable/ic_call" />
 
             <TextView
                 android:id="@+id/tv_open_browser"
@@ -89,7 +89,7 @@
                 android:layout_alignEnd="@id/btn_call"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="Open browser"
+                android:text="Call"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -102,7 +102,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_toEndOf="@id/btn_call"
                 android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_share_white"/>
+                android:src="@drawable/ic_share_white" />
 
             <TextView
                 android:id="@+id/tv_share"
@@ -131,5 +131,5 @@
         android:layout_marginBottom="-80dp"
         android:background="@drawable/background_circle"
         android:padding="20dp"
-        android:src="@drawable/ic_link" />
+        android:src="@drawable/ic_call_purple" />
 </RelativeLayout>
