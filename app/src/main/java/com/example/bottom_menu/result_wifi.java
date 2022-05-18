@@ -19,14 +19,13 @@ import androidx.fragment.app.DialogFragment;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultText extends DialogFragment {
+public class result_wifi extends DialogFragment {
     private String fetchText;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.result_text, container, false);
-
+        View view = inflater.inflate(R.layout.result_wifi, container, false);
 
         TextView title = view.findViewById(R.id.txt_result);
         TextView btn_copy = view.findViewById(R.id.btn_copy);

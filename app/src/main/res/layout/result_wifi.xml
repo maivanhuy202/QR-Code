@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background2"
     android:layout_centerInParent="true"
+
     >
 
     <ImageView
@@ -36,32 +37,18 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="65dp"
-            android:text="QR MESSAGE"
+            android:text="QR WIFI"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txt_name"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/QR_name"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:gravity="center_horizontal"
-            android:text="PHONE NUMBER"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txt_result"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_name"
+            android:layout_below="@id/QR_name"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
             android:text="QR_TEXT_RESULT"
             android:textAllCaps="false"
@@ -81,6 +68,7 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,22 +77,22 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/btn_import"
+                android:id="@+id/btn_call"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_send" />
+                android:src="@drawable/ic_browser" />
 
             <TextView
                 android:id="@+id/tv_open_browser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_import"
-                android:layout_alignStart="@id/btn_import"
-                android:layout_alignEnd="@id/btn_import"
+                android:layout_below="@id/btn_call"
+                android:layout_alignStart="@id/btn_call"
+                android:layout_alignEnd="@id/btn_call"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
-                android:text="Send"
+                android:text="Open browser"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -115,14 +103,9 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="100dp"
-                android:layout_toEndOf="@id/btn_import"
+                android:layout_toEndOf="@id/btn_call"
                 android:background="@drawable/background_button_corner_2"
-                android:insetTop="0dp"
-
-                android:insetBottom="0dp"
-                android:src="@drawable/ic_share_white"
-
-                app:iconPadding="0dp" />
+                android:src="@drawable/ic_share_white" />
 
             <TextView
                 android:id="@+id/tv_share"
@@ -150,5 +133,5 @@
         android:layout_marginBottom="-80dp"
         android:background="@drawable/background_circle"
         android:padding="20dp"
-        android:src="@drawable/ic_message1" />
+        android:src="@drawable/ic_wifi" />
 </RelativeLayout>

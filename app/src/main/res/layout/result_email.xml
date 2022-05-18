@@ -2,9 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#EDEDED"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background2"
     >
 
     <ImageView
@@ -40,7 +40,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_address"
+            android:id="@+id/txt_name"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,11 +54,11 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txt_subject"
+            android:id="@+id/txt_result"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_address"
+            android:layout_below="@id/txt_name"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
@@ -68,11 +68,11 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/txt_body"
+            android:id="@+id/txt_company"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_subject"
+            android:layout_below="@id/txt_result"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
@@ -85,7 +85,7 @@
             android:id="@+id/btn_copy"
             android:layout_width="192dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_body"
+            android:layout_below="@id/txt_company"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="#8624C1"
@@ -102,7 +102,7 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/btn_send"
+                android:id="@+id/btn_import"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/background_button_corner_2"
@@ -112,9 +112,9 @@
                 android:id="@+id/tv_open_browser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_send"
-                android:layout_alignStart="@id/btn_send"
-                android:layout_alignEnd="@id/btn_send"
+                android:layout_below="@id/btn_import"
+                android:layout_alignStart="@id/btn_import"
+                android:layout_alignEnd="@id/btn_import"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Send"
@@ -128,7 +128,7 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="100dp"
-                android:layout_toEndOf="@id/btn_send"
+                android:layout_toEndOf="@id/btn_import"
                 android:background="@drawable/background_button_corner_2"
                 android:insetTop="0dp"
 

@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#EDEDED"
+    android:background="@drawable/background2"
+    android:layout_centerInParent="true"
     >
 
     <ImageView
@@ -40,7 +41,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/txt_subject"
+            android:id="@+id/txt_result"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,7 +58,7 @@
             android:id="@+id/btn_copy"
             android:layout_width="192dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_subject"
+            android:layout_below="@id/txt_result"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:backgroundTint="#8624C1"
@@ -102,7 +103,7 @@
                 android:layout_marginStart="100dp"
                 android:layout_toEndOf="@id/btn_call"
                 android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_share_white"/>
+                android:src="@drawable/ic_share_white" />
 
             <TextView
                 android:id="@+id/tv_share"

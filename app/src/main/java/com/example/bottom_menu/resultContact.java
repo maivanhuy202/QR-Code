@@ -14,46 +14,60 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
+
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultText extends DialogFragment {
-    private String fetchText;
-
+public class resultContact extends BottomSheetDialogFragment {
+    private String fetchAddress, fetchCompany, fetchPhone, fetchEmail, fetchName;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.result_text, container, false);
+        View view = inflater.inflate(R.layout.result_contact, container, false);
 
-
-        TextView title = view.findViewById(R.id.txt_result);
+        TextView name = view.findViewById(R.id.txt_name);
+        TextView address = view.findViewById(R.id.txt_result);
+        TextView company = view.findViewById(R.id.txt_company);
+        TextView phone = view.findViewById(R.id.txt_phone);
+        TextView email = view.findViewById(R.id.txt_email);
         TextView btn_copy = view.findViewById(R.id.btn_copy);
         ImageView close = view.findViewById(R.id.btn_ArrowBack);
         ImageView btnShare = view.findViewById(R.id.btn_share);
-        title.setText(fetchText);
+        ImageView btnImport = view.findViewById(R.id.btn_import);
+
+        name.setText(fetchName);
+        address.setText(fetchAddress);
+        company.setText(fetchCompany);
+        phone.setText(fetchPhone);
+        email.setText(fetchEmail);
 
         btn_copy.setOnClickListener(view1 -> {
             int sdk = android.os.Build.VERSION.SDK_INT;
             if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(title.getText());
+                clipboard.setText( address.getText().toString() + " " + company.getText().toString());
             } else {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(null,title.getText());
+                android.content.ClipData clip = android.content.ClipData.newPlainText(null,address.getText().toString() + " " + company.getText().toString());
                 clipboard.setPrimaryClip(clip);
             }
             Toast.makeText(requireContext(), "Text copied into clipboard",Toast.LENGTH_LONG).show();
         });
 
+        btnImport.setOnClickListener(view14 -> {
+        });
+
         btnShare.setOnClickListener(view13 -> {
             Intent myIntent = new Intent(Intent.ACTION_SEND);
             myIntent.setType("text/plain");
-            String body = title.getText().toString().trim();
-            String sub = "";
-            myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-            myIntent.putExtra(Intent.EXTRA_TEXT,body);
+            String txt = "Name: " + name
+                        + "\nAddress: " + address
+                        + "\nCompany: " + company
+                        + "\nPhone Number: " + phone
+                        + "\nEmail: " + email;
+            myIntent.putExtra(Intent.EXTRA_TEXT,txt);
             startActivity(Intent.createChooser(myIntent, "Share"));
         });
 
@@ -61,9 +75,13 @@ public class resultText extends DialogFragment {
 
         return view;
     }
-    public void fetchText(String text) {
+    public void fetch(String name, String address, String company, String phone, String email) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
-        executorService.execute(() -> fetchText = text);
+        executorService.execute(() -> fetchName = name);
+        executorService.execute(() -> fetchAddress = address);
+        executorService.execute(() -> fetchCompany = company);
+        executorService.execute(() -> fetchPhone = phone);
+        executorService.execute(() -> fetchEmail = email);
     }
 }

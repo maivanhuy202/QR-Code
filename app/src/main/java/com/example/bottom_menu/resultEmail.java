@@ -28,13 +28,13 @@ public class resultEmail extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_email, container, false);
 
-        TextView address = view.findViewById(R.id.txt_address);
-        TextView subject = view.findViewById(R.id.txt_subject);
-        TextView body = view.findViewById(R.id.txt_body);
+        TextView address = view.findViewById(R.id.txt_name);
+        TextView subject = view.findViewById(R.id.txt_result);
+        TextView body = view.findViewById(R.id.txt_company);
         TextView btn_copy = view.findViewById(R.id.btn_copy);
         ImageView close = view.findViewById(R.id.btn_ArrowBack);
         ImageView btnShare = view.findViewById(R.id.btn_share);
-        ImageView btnSend = view.findViewById(R.id.btn_send);
+        ImageView btnSend = view.findViewById(R.id.btn_import);
 
         address.setText(fetchAddress);
         subject.setText(fetchSubject);

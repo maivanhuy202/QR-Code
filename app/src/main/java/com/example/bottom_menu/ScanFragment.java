@@ -6,8 +6,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.graphics.Rect;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,6 +41,7 @@ import com.google.mlkit.vision.barcode.common.Barcode;
 import com.google.mlkit.vision.common.InputImage;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -207,6 +206,8 @@ public class ScanFragment extends Fragment {
         private final resultMessage resultMessage;
         private final resultPhoneNumber resultPhoneNumber;
         private final resultEmail resultEmail;
+        private final resultContact resultContact;
+        private final resultDefault resultDefault;
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
@@ -215,6 +216,8 @@ public class ScanFragment extends Fragment {
             resultMessage = new resultMessage();
             resultPhoneNumber = new resultPhoneNumber();
             resultEmail = new resultEmail();
+            resultContact = new  resultContact();
+            resultDefault = new resultDefault();
         }
 
         @Override
@@ -249,19 +252,11 @@ public class ScanFragment extends Fragment {
 
         private void readerBarcodeData(List<Barcode> barcodes) {
             for (Barcode barcode : barcodes) {
-                Rect bounds = barcode.getBoundingBox();
-                Point[] corners = barcode.getCornerPoints();
-
                 String rawValue = barcode.getRawValue();
-
                 int valueType = barcode.getValueType();
                 // See API reference for complete list of supported types
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
-                        String ssid = Objects.requireNonNull(barcode.getWifi()).getSsid();
-                        String password = barcode.getWifi().getPassword();
-                        int type = barcode.getWifi().getEncryptionType();
-                        break;
                     case Barcode.TYPE_URL:
                         if (!resultUrl.isAdded()) {
                             resultUrl.show(fragmentManager, "URL BARCODE SCANNED");
@@ -301,7 +296,21 @@ public class ScanFragment extends Fragment {
                         }
                         resultPhoneNumber.fetch(phoneNum);
                         break;
-
+                    case Barcode.TYPE_CONTACT_INFO:
+                        String name = Objects.requireNonNull(Objects.requireNonNull(barcode.getContactInfo()).getName()).getFormattedName();
+                        String address1 = Arrays.toString(barcode.getContactInfo().getAddresses().get(0).getAddressLines()) ;
+                        String company = Objects.requireNonNull(barcode.getContactInfo().getOrganization());
+                        String phone = barcode.getContactInfo().getPhones().get(0).getNumber();
+                        String email = barcode.getContactInfo().getEmails().get(0).getAddress();
+                        if (!resultContact.isAdded()){
+                            resultContact.show(fragmentManager,"QR CONTACT SCANNED");
+                        }
+                        resultContact.fetch(name, address1,company, phone,email);
+                    default:
+                        if (!resultDefault.isAdded()) {
+                            resultDefault.show(fragmentManager, "QR SCANNED");
+                        }
+                        resultDefault.fetch(rawValue);
                 }
             }
         }

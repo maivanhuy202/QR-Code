@@ -19,13 +19,13 @@ import androidx.fragment.app.DialogFragment;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultText extends DialogFragment {
+public class resultDefault extends DialogFragment {
     private String fetchText;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.result_text, container, false);
+        View view = inflater.inflate(R.layout.result_default, container, false);
 
 
         TextView title = view.findViewById(R.id.txt_result);
@@ -61,7 +61,7 @@ public class resultText extends DialogFragment {
 
         return view;
     }
-    public void fetchText(String text) {
+    public void fetch(String text) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executorService.execute(() -> fetchText = text);

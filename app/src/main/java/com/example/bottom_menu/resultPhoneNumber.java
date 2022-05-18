@@ -15,13 +15,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultPhoneNumber extends BottomSheetDialogFragment {
+public class resultPhoneNumber extends DialogFragment {
     private String fetchNum;
 
     @Nullable
@@ -30,7 +29,7 @@ public class resultPhoneNumber extends BottomSheetDialogFragment {
         View view = inflater.inflate(R.layout.result_phone_number, container, false);
 
 
-        TextView phoneNumber = view.findViewById(R.id.txt_subject);
+        TextView phoneNumber = view.findViewById(R.id.txt_result);
         TextView btn_copy = view.findViewById(R.id.btn_copy);
         ImageView close = view.findViewById(R.id.btn_ArrowBack);
         ImageView btn_call = view.findViewById(R.id.btn_call);

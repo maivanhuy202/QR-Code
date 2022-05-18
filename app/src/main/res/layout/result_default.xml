@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/background2"
     android:layout_centerInParent="true"
+
     >
 
     <ImageView
@@ -36,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="65dp"
-            android:text="QR PHONE NUMBER"
-            android:textSize="18dp"
+            android:text="QR SCANNED"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -49,7 +50,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:gravity="center_horizontal"
-            android:text="url_phone_number"
+            android:text="QR_TEXT_RESULT"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="20sp" />
@@ -67,60 +68,30 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/btn_share"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
             android:layout_below="@id/btn_copy"
-            android:layout_marginTop="20dp"
-            android:gravity="center">
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/background_button_corner_2"
+            android:src="@drawable/ic_share_white" />
 
-            <ImageView
-                android:id="@+id/btn_call"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_call" />
-
-            <TextView
-                android:id="@+id/tv_open_browser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_call"
-                android:layout_alignStart="@id/btn_call"
-                android:layout_alignEnd="@id/btn_call"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Call"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/btn_share"
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="100dp"
-                android:layout_toEndOf="@id/btn_call"
-                android:background="@drawable/background_button_corner_2"
-                android:src="@drawable/ic_share_white" />
-
-            <TextView
-                android:id="@+id/tv_share"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btn_share"
-                android:layout_alignStart="@id/btn_share"
-                android:layout_alignEnd="@id/btn_share"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:text="Share"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </RelativeLayout>
-
+        <TextView
+            android:id="@+id/tv_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_share"
+            android:layout_alignStart="@id/btn_share"
+            android:layout_alignEnd="@id/btn_share"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Share"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ImageView
@@ -132,5 +103,5 @@
         android:layout_marginBottom="-80dp"
         android:background="@drawable/background_circle"
         android:padding="20dp"
-        android:src="@drawable/ic_call_purple" />
+        android:src="@drawable/ic_qr_code_purple" />
 </RelativeLayout>

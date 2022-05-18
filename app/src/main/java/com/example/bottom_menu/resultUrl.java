@@ -16,13 +16,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import androidx.fragment.app.DialogFragment;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultUrl extends BottomSheetDialogFragment {
+public class resultUrl extends DialogFragment {
 
     private TextView title;
     private String fetchUrl;
@@ -32,7 +31,7 @@ public class resultUrl extends BottomSheetDialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.result_url, container, false);
 
-        title = view.findViewById(R.id.txt_subject);
+        title = view.findViewById(R.id.txt_result);
 
         Button btnCopy = view.findViewById(R.id.btn_copy);
         ImageView btnBrowser = view.findViewById(R.id.btn_call);
