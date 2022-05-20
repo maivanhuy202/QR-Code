@@ -47,10 +47,18 @@ public class resultContact extends BottomSheetDialogFragment {
             int sdk = android.os.Build.VERSION.SDK_INT;
             if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText( address.getText().toString() + " " + company.getText().toString());
+                clipboard.setText( "Name: " + name
+                        + "\nAddress: " + address
+                        + "\nCompany: " + company
+                        + "\nPhone Number: " + phone
+                        + "\nEmail: " + email);
             } else {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(null,address.getText().toString() + " " + company.getText().toString());
+                android.content.ClipData clip = android.content.ClipData.newPlainText(null,"Name: " + name
+                        + "\nAddress: " + address
+                        + "\nCompany: " + company
+                        + "\nPhone Number: " + phone
+                        + "\nEmail: " + email);
                 clipboard.setPrimaryClip(clip);
             }
             Toast.makeText(requireContext(), "Text copied into clipboard",Toast.LENGTH_LONG).show();

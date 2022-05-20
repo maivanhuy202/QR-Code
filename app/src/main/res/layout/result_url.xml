@@ -75,7 +75,7 @@
             android:gravity="center">
 
             <ImageView
-                android:id="@+id/btn_call"
+                android:id="@+id/btn_connect"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:background="@drawable/background_button_corner_2"
@@ -85,9 +85,9 @@
                 android:id="@+id/tv_open_browser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_call"
-                android:layout_alignStart="@id/btn_call"
-                android:layout_alignEnd="@id/btn_call"
+                android:layout_below="@id/btn_connect"
+                android:layout_alignStart="@id/btn_connect"
+                android:layout_alignEnd="@id/btn_connect"
                 android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="Open browser"
@@ -101,7 +101,7 @@
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="100dp"
-                android:layout_toEndOf="@id/btn_call"
+                android:layout_toEndOf="@id/btn_connect"
                 android:background="@drawable/background_button_corner_2"
                 android:src="@drawable/ic_share_white" />
 

@@ -32,7 +32,7 @@ public class resultPhoneNumber extends DialogFragment {
         TextView phoneNumber = view.findViewById(R.id.txt_result);
         TextView btn_copy = view.findViewById(R.id.btn_copy);
         ImageView close = view.findViewById(R.id.btn_ArrowBack);
-        ImageView btn_call = view.findViewById(R.id.btn_call);
+        ImageView btn_call = view.findViewById(R.id.btn_connect);
         ImageView btnShare = view.findViewById(R.id.btn_share);
         phoneNumber.setText(fetchNum);
 

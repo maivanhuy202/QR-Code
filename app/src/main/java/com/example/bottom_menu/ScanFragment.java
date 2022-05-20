@@ -208,6 +208,7 @@ public class ScanFragment extends Fragment {
         private final resultEmail resultEmail;
         private final resultContact resultContact;
         private final resultDefault resultDefault;
+        private final resultWifi resultWifi;
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
@@ -218,6 +219,7 @@ public class ScanFragment extends Fragment {
             resultEmail = new resultEmail();
             resultContact = new  resultContact();
             resultDefault = new resultDefault();
+            resultWifi = new resultWifi();
         }
 
         @Override
@@ -257,9 +259,17 @@ public class ScanFragment extends Fragment {
                 // See API reference for complete list of supported types
                 switch (valueType) {
                     case Barcode.TYPE_WIFI:
+                        String ssid = Objects.requireNonNull(barcode.getWifi()).getSsid();
+                        String password = barcode.getWifi().getPassword();
+                        int encryptionType = barcode.getWifi().getEncryptionType();
+                        if (!resultWifi.isAdded()){
+                            resultWifi.show(fragmentManager,"QR WIFI SCANNED");
+                        }
+                        resultWifi.fetch(ssid,password,encryptionType);
+                        break;
                     case Barcode.TYPE_URL:
                         if (!resultUrl.isAdded()) {
-                            resultUrl.show(fragmentManager, "URL BARCODE SCANNED");
+                            resultUrl.show(fragmentManager, "URL QR SCANNED");
                         }
                         resultUrl.fetchUrl(Objects.requireNonNull(barcode.getUrl()).getUrl());
                         break;

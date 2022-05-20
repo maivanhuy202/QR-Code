@@ -34,7 +34,7 @@ public class resultUrl extends DialogFragment {
         title = view.findViewById(R.id.txt_result);
 
         Button btnCopy = view.findViewById(R.id.btn_copy);
-        ImageView btnBrowser = view.findViewById(R.id.btn_call);
+        ImageView btnBrowser = view.findViewById(R.id.btn_connect);
         ImageView close = view.findViewById(R.id.btn_ArrowBack);
         ImageView btnShare = view.findViewById(R.id.btn_share);
         title.setText(fetchUrl);
