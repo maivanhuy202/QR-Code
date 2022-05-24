@@ -9,7 +9,7 @@
     <View
         android:id="@+id/rectangle_1"
         android:layout_width="match_parent"
-        android:layout_height="537dp"
+        android:layout_height="650dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="-71dp"
@@ -27,7 +27,7 @@
             android:layout_width="150dp"
             android:layout_height="120dp"
             android:background="@color/white"
-            android:src="@drawable/ic_contact" />
+            android:src="@drawable/ic_create_24" />
 
         <TextView
             android:layout_width="150dp"
@@ -35,7 +35,7 @@
             android:layout_gravity="center"
             android:background="#8624C1"
             android:gravity="center"
-            android:text="Contact"
+            android:text="Created"
             android:textColor="@color/white"
             android:textSize="20sp" />
 
@@ -44,7 +44,7 @@
             android:layout_width="150dp"
             android:layout_height="120dp"
             android:background="@color/white"
-            android:src="@drawable/email"
+            android:src="@drawable/ic_qr_code_scanner_24"
             android:layout_marginTop="60dp"/>
         <TextView
             android:layout_width="150dp"
@@ -53,7 +53,7 @@
             android:gravity="center"
             android:background="#8624C1"
             android:textColor="@color/white"
-            android:text="Email"
+            android:text="Scanned"
             android:textSize="20sp" />
     </LinearLayout>
 

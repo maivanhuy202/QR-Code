@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,8 +34,9 @@ import java.util.Objects;
 @SuppressWarnings("ALL")
 public class ResultCreate extends Fragment {
     ImageView result;
-    ImageView share, save, copy, close;
+    ImageView share, save, copy, close, favourite;
     BitMatrix bitMatrix;
+    private boolean CHECKED = true;
 
 
     @Override
@@ -46,6 +48,8 @@ public class ResultCreate extends Fragment {
         copy = view.findViewById(R.id.btn_copy);
         result = view.findViewById(R.id.imgResult);
         close = view.findViewById(R.id.btn_ArrowBack);
+        favourite = view.findViewById(R.id.btn_favourite);
+        favourite.setColorFilter(-12303292);
         ActivityCompat.requestPermissions(requireActivity() , new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         BarcodeEncoder encoder = new BarcodeEncoder();
         Bitmap bitmap = encoder.createBitmap(bitMatrix);
@@ -108,9 +112,27 @@ public class ResultCreate extends Fragment {
             startActivity(Intent.createChooser(intent,"share"));
         });
 
+        favourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int color = Color.parseColor("#8624C1");
+                if(CHECKED){
+                    favourite.setColorFilter(color);
+                    CHECKED = false;
+                }else {
+                    favourite.setColorFilter(-12303292);
+                    CHECKED = true;
+                }
+                //Toast.makeText(getActivity(), favourite.getColorFilter().toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
         close.setOnClickListener(view12 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
         return view;
     }
+
+
 
 
     @Override
