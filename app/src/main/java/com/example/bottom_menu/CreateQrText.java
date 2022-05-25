@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -35,7 +36,10 @@ public class CreateQrText extends Fragment {
         apply.setOnClickListener(view1 -> {
             String txt = editText.getText().toString().trim();
             MultiFormatWriter writer = new MultiFormatWriter();
+
+            QrModel qrModel;
             try {
+                qrModel = new QrModel(0, false, txt);
                 BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
                 resultCreate = new ResultCreate(matrix);
                 FragmentManager fragmentManager = getParentFragmentManager();
@@ -43,8 +47,12 @@ public class CreateQrText extends Fragment {
                 fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
             } catch (WriterException e) {
                 e.printStackTrace();
+                qrModel = new QrModel(-1, false, "ERROR");
             }
 
+            DatabaseHelper databaseHelper = new DatabaseHelper(this.getContext());
+            boolean success = databaseHelper.add(qrModel);
+            Toast.makeText(this.getContext(), "Success" + success, Toast.LENGTH_SHORT).show();
         });
 
 

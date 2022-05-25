@@ -23,7 +23,7 @@
 
 
         <ImageView
-            android:id="@+id/logoContact"
+            android:id="@+id/logoCreated"
             android:layout_width="150dp"
             android:layout_height="120dp"
             android:background="@color/white"
@@ -40,7 +40,7 @@
             android:textSize="20sp" />
 
         <ImageView
-            android:id="@+id/logoEmail"
+            android:id="@+id/logoScanned"
             android:layout_width="150dp"
             android:layout_height="120dp"
             android:background="@color/white"
