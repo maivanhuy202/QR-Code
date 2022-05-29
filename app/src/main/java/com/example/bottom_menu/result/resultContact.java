@@ -1,4 +1,4 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.result;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.bottom_menu.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.concurrent.ExecutorService;
@@ -22,6 +23,7 @@ import java.util.concurrent.Executors;
 
 public class resultContact extends BottomSheetDialogFragment {
     private String fetchAddress, fetchCompany, fetchPhone, fetchEmail, fetchName;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -45,23 +47,23 @@ public class resultContact extends BottomSheetDialogFragment {
 
         btn_copy.setOnClickListener(view1 -> {
             int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText( "Name: " + name
+                clipboard.setText("Name: " + name
                         + "\nAddress: " + address
                         + "\nCompany: " + company
                         + "\nPhone Number: " + phone
                         + "\nEmail: " + email);
             } else {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(null,"Name: " + name
+                android.content.ClipData clip = android.content.ClipData.newPlainText(null, "Name: " + name
                         + "\nAddress: " + address
                         + "\nCompany: " + company
                         + "\nPhone Number: " + phone
                         + "\nEmail: " + email);
                 clipboard.setPrimaryClip(clip);
             }
-            Toast.makeText(requireContext(), "Text copied into clipboard",Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), "Text copied into clipboard", Toast.LENGTH_LONG).show();
         });
 
         btnImport.setOnClickListener(view14 -> {
@@ -71,11 +73,11 @@ public class resultContact extends BottomSheetDialogFragment {
             Intent myIntent = new Intent(Intent.ACTION_SEND);
             myIntent.setType("text/plain");
             String txt = "Name: " + name
-                        + "\nAddress: " + address
-                        + "\nCompany: " + company
-                        + "\nPhone Number: " + phone
-                        + "\nEmail: " + email;
-            myIntent.putExtra(Intent.EXTRA_TEXT,txt);
+                    + "\nAddress: " + address
+                    + "\nCompany: " + company
+                    + "\nPhone Number: " + phone
+                    + "\nEmail: " + email;
+            myIntent.putExtra(Intent.EXTRA_TEXT, txt);
             startActivity(Intent.createChooser(myIntent, "Share"));
         });
 
@@ -83,6 +85,7 @@ public class resultContact extends BottomSheetDialogFragment {
 
         return view;
     }
+
     public void fetch(String name, String address, String company, String phone, String email) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());

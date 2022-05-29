@@ -1,5 +1,7 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.result;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,16 +18,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.bottom_menu.R;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultDefault extends DialogFragment {
+public class resultText extends DialogFragment {
     private String fetchText;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.result_default, container, false);
+        View view = inflater.inflate(R.layout.result_text, container, false);
 
 
         TextView title = view.findViewById(R.id.txt_result);
@@ -35,16 +39,21 @@ public class resultDefault extends DialogFragment {
         title.setText(fetchText);
 
         btn_copy.setOnClickListener(view1 -> {
-            int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText(title.getText());
-            } else {
-                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(null,title.getText());
-                clipboard.setPrimaryClip(clip);
-            }
-            Toast.makeText(requireContext(), "Text copied into clipboard",Toast.LENGTH_LONG).show();
+//            int sdk = android.os.Build.VERSION.SDK_INT;
+//            if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+//                android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+//                clipboard.setText(title.getText());
+//            } else {
+//                android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+//                android.content.ClipData clip = android.content.ClipData.newPlainText(null, title.getText());
+//                clipboard.setPrimaryClip(clip);
+//            }
+            ClipboardManager clipboard = (ClipboardManager) requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
+            ClipData clip = ClipData.newPlainText(null, title.getText());
+            clipboard.setPrimaryClip(clip);
+
+            Toast.makeText(requireContext(), "Text copied into clipboard", Toast.LENGTH_LONG).show();
+
         });
 
         btnShare.setOnClickListener(view13 -> {
@@ -52,8 +61,8 @@ public class resultDefault extends DialogFragment {
             myIntent.setType("text/plain");
             String body = title.getText().toString().trim();
             String sub = "";
-            myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-            myIntent.putExtra(Intent.EXTRA_TEXT,body);
+            myIntent.putExtra(Intent.EXTRA_SUBJECT, sub);
+            myIntent.putExtra(Intent.EXTRA_TEXT, body);
             startActivity(Intent.createChooser(myIntent, "Share"));
         });
 
@@ -61,7 +70,9 @@ public class resultDefault extends DialogFragment {
 
         return view;
     }
-    public void fetch(String text) {
+
+
+    public void fetchText(String text) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executorService.execute(() -> fetchText = text);

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HistoryFragment">
+    tools:context=".main.HistoryFragment">
 
 
     <View
@@ -18,8 +18,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
 
         <ImageView
@@ -43,20 +43,20 @@
             android:id="@+id/logoScanned"
             android:layout_width="150dp"
             android:layout_height="120dp"
+            android:layout_marginTop="60dp"
             android:background="@color/white"
-            android:src="@drawable/ic_qr_code_scanner_24"
-            android:layout_marginTop="60dp"/>
+            android:src="@drawable/ic_qr_code_scanner_24" />
+
         <TextView
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
-            android:gravity="center"
             android:background="#8624C1"
-            android:textColor="@color/white"
+            android:gravity="center"
             android:text="Scanned"
+            android:textColor="@color/white"
             android:textSize="20sp" />
     </LinearLayout>
-
 
 
 </RelativeLayout>

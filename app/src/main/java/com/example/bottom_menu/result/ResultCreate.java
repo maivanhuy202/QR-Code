@@ -1,4 +1,4 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.result;
 
 import android.Manifest;
 import android.content.ContentResolver;
@@ -23,6 +23,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.bottom_menu.R;
+import com.example.bottom_menu.create.CreateFragment;
 import com.google.zxing.common.BitMatrix;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 

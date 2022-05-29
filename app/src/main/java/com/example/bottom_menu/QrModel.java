@@ -1,13 +1,29 @@
 package com.example.bottom_menu;
 
+
 public class QrModel {
-    private final int[] QR_TYPE = {0, 1, 2, 3, 4, 5, 6, 7};
+
+    private final String title;
+    private final String dateTime;
     private int type;
     private boolean isFavorite;
     private String content;
+    /*QR Type
+    1: contact
+    2: email
+    3: message
+    4: url
+    5: text
+    6: phone number
+    7: wifi
+    8: default
+     */
 
-    public QrModel(int type, boolean isFavorite, String content) {
+
+    public QrModel(int type, String dateTime, String title, boolean isFavorite, String content) {
         this.type = type;
+        this.dateTime = dateTime;
+        this.title = title;
         this.isFavorite = isFavorite;
         this.content = content;
     }
@@ -19,9 +35,15 @@ public class QrModel {
                 " Content: '" + content + '\'';
     }
 
-    public int[] getQR_TYPE() {
-        return QR_TYPE;
+
+    public String getTitle() {
+        return title;
     }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
 
     public int getType() {
         return type;

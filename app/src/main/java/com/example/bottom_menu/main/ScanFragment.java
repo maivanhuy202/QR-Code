@@ -1,4 +1,4 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.main;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -32,6 +32,18 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.bottom_menu.DatabaseHelper1;
+import com.example.bottom_menu.MyApplication;
+import com.example.bottom_menu.QrModel;
+import com.example.bottom_menu.R;
+import com.example.bottom_menu.result.resultContact;
+import com.example.bottom_menu.result.resultDefault;
+import com.example.bottom_menu.result.resultEmail;
+import com.example.bottom_menu.result.resultMessage;
+import com.example.bottom_menu.result.resultPhoneNumber;
+import com.example.bottom_menu.result.resultText;
+import com.example.bottom_menu.result.resultUrl;
+import com.example.bottom_menu.result.resultWifi;
 import com.google.android.gms.tasks.Task;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.google.mlkit.vision.barcode.BarcodeScanner;
@@ -51,9 +63,9 @@ import java.util.concurrent.Executors;
 public class ScanFragment extends Fragment {
 
     public static final int GET_FROM_GALLERY = 3;
+    public PreviewView previewView;
     private ListenableFuture<ProcessCameraProvider> cameraProviderFuture;
     private ExecutorService cameraExecutor;
-    public PreviewView previewView;
     private MyImageAnalyzer analyzer;
     private ImageView btnFlashOn;
     private ImageView btnFlashOff;
@@ -87,8 +99,8 @@ public class ScanFragment extends Fragment {
         cameraProviderFuture.addListener(() -> {
             try {
                 if (ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA) != (PackageManager.PERMISSION_GRANTED)) {
-                    ActivityCompat.requestPermissions(requireActivity(), new String[] {Manifest.permission.CAMERA}, 101);
-                }else {
+                    ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.CAMERA}, 101);
+                } else {
                     ProcessCameraProvider processCameraProvider = cameraProviderFuture.get();
                     bindPreview(processCameraProvider);
                 }
@@ -104,11 +116,11 @@ public class ScanFragment extends Fragment {
     @SuppressWarnings("deprecation")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 101 && grantResults.length >0) {
+        if (requestCode == 101 && grantResults.length > 0) {
             ProcessCameraProvider processCameraProvider = null;
             try {
                 processCameraProvider = cameraProviderFuture.get();
-            } catch ( InterruptedException | ExecutionException e) {
+            } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
             bindPreview(Objects.requireNonNull(processCameraProvider));
@@ -121,12 +133,12 @@ public class ScanFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
+        if (requestCode == GET_FROM_GALLERY && resultCode == Activity.RESULT_OK) {
             assert data != null;
             Uri selectedImage = data.getData();
             Bitmap bitmap;
             try {
-                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getApplicationContext().getContentResolver() , selectedImage);
+                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getApplicationContext().getContentResolver(), selectedImage);
                 InputImage image = InputImage.fromBitmap(bitmap, 0);
                 BarcodeScannerOptions options =
                         new BarcodeScannerOptions.Builder()
@@ -166,12 +178,12 @@ public class ScanFragment extends Fragment {
                 .setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
                 .build();
 
-        imageAnalysis.setAnalyzer(cameraExecutor,analyzer);
+        imageAnalysis.setAnalyzer(cameraExecutor, analyzer);
 
         Camera camera = processCameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalysis);
 
         btnFlashOn.setOnClickListener(view1 -> {
-            if ( camera.getCameraInfo().hasFlashUnit() ) {
+            if (camera.getCameraInfo().hasFlashUnit()) {
                 camera.getCameraControl().enableTorch(!lightOn);
                 lightOn = !lightOn;
                 btnFlashOn.setVisibility(View.GONE);
@@ -184,7 +196,7 @@ public class ScanFragment extends Fragment {
 
         });
         btnFlashOff.setOnClickListener(view -> {
-            if ( camera.getCameraInfo().hasFlashUnit() ) {
+            if (camera.getCameraInfo().hasFlashUnit()) {
                 camera.getCameraControl().enableTorch(!lightOn);
                 lightOn = !lightOn;
                 btnFlashOn.setVisibility(View.VISIBLE);
@@ -201,14 +213,15 @@ public class ScanFragment extends Fragment {
 
     public static class MyImageAnalyzer implements ImageAnalysis.Analyzer {
         private final FragmentManager fragmentManager;
-        private final resultUrl resultUrl;
-        private final resultText resultText;
-        private final resultMessage resultMessage;
-        private final resultPhoneNumber resultPhoneNumber;
-        private final resultEmail resultEmail;
-        private final resultContact resultContact;
-        private final resultDefault resultDefault;
-        private final resultWifi resultWifi;
+        private final com.example.bottom_menu.result.resultUrl resultUrl;
+        private final com.example.bottom_menu.result.resultText resultText;
+        private final com.example.bottom_menu.result.resultMessage resultMessage;
+        private final com.example.bottom_menu.result.resultPhoneNumber resultPhoneNumber;
+        private final com.example.bottom_menu.result.resultEmail resultEmail;
+        private final com.example.bottom_menu.result.resultContact resultContact;
+        private final com.example.bottom_menu.result.resultDefault resultDefault;
+        private final com.example.bottom_menu.result.resultWifi resultWifi;
+
 
         public MyImageAnalyzer(FragmentManager fragmentManager) {
             this.fragmentManager = fragmentManager;
@@ -217,7 +230,7 @@ public class ScanFragment extends Fragment {
             resultMessage = new resultMessage();
             resultPhoneNumber = new resultPhoneNumber();
             resultEmail = new resultEmail();
-            resultContact = new  resultContact();
+            resultContact = new resultContact();
             resultDefault = new resultDefault();
             resultWifi = new resultWifi();
         }
@@ -231,6 +244,7 @@ public class ScanFragment extends Fragment {
             @SuppressLint("UnsafeOptInUsageError") Image image1 = image.getImage();
             assert image1 != null;
             InputImage inputImage = InputImage.fromMediaImage(image1, image.getImageInfo().getRotationDegrees());
+
             BarcodeScannerOptions options =
                     new BarcodeScannerOptions.Builder()
                             .setBarcodeFormats(
@@ -238,90 +252,128 @@ public class ScanFragment extends Fragment {
                                     Barcode.FORMAT_AZTEC,
                                     Barcode.FORMAT_ALL_FORMATS)
                             .build();
+
             BarcodeScanner scanner = BarcodeScanning.getClient(options);
-            // Task failed with an exception
-            // ...
-            // Task completed successfully
-            // [START_EXCLUDE]
-            // [START get_barcodes]
-            // [END get_barcodes]
-            // [END_EXCLUDE]
             Task<List<Barcode>> result = scanner.process(inputImage)
                     .addOnSuccessListener(this::readerBarcodeData)
                     .addOnFailureListener(Throwable::printStackTrace)
                     .addOnCompleteListener(task -> image.close());
+
+
         }
 
         private void readerBarcodeData(List<Barcode> barcodes) {
             for (Barcode barcode : barcodes) {
+
+                QrModel qrModel;
+                String date = android.text.format.DateFormat.format("kk:mm:ss, dd-MM-yyyy", new java.util.Date()).toString();
                 String rawValue = barcode.getRawValue();
+
                 int valueType = barcode.getValueType();
-                // See API reference for complete list of supported types
                 switch (valueType) {
+
                     case Barcode.TYPE_WIFI:
                         String ssid = Objects.requireNonNull(barcode.getWifi()).getSsid();
                         String password = barcode.getWifi().getPassword();
                         int encryptionType = barcode.getWifi().getEncryptionType();
-                        if (!resultWifi.isAdded()){
-                            resultWifi.show(fragmentManager,"QR WIFI SCANNED");
+                        if (!resultWifi.isAdded()) {
+                            resultWifi.show(fragmentManager, "QR WIFI SCANNED");
                         }
-                        resultWifi.fetch(ssid,password,encryptionType);
+                        String ET;
+                        if (encryptionType == 1) ET = "None";
+                        else if (encryptionType == 2) ET = "WPA/WPA2";
+                        else ET = "WEP";
+                        String wifi = "WIFI:S:" + ssid +
+                                ";T:" + ET +
+                                ";P:" + password +
+                                ";H:false";
+                        resultWifi.fetch(ssid, password, encryptionType);
+                        qrModel = new QrModel(7, date, ssid, false, wifi);
                         break;
+
                     case Barcode.TYPE_URL:
+                        String url = Objects.requireNonNull(barcode.getUrl()).getUrl();
                         if (!resultUrl.isAdded()) {
                             resultUrl.show(fragmentManager, "URL QR SCANNED");
                         }
-                        resultUrl.fetchUrl(Objects.requireNonNull(barcode.getUrl()).getUrl());
+                        resultUrl.fetchUrl(url);
+                        qrModel = new QrModel(4, date, url, true, url);
                         break;
-                    case Barcode.TYPE_CALENDAR_EVENT:
+
+                    case Barcode.TYPE_CONTACT_INFO:
+                        String name = Objects.requireNonNull(Objects.requireNonNull(barcode.getContactInfo()).getName()).getFormattedName();
+                        String address1 = Arrays.toString(barcode.getContactInfo().getAddresses().get(0).getAddressLines());
+                        String company = Objects.requireNonNull(barcode.getContactInfo().getOrganization());
+                        String phone = barcode.getContactInfo().getPhones().get(0).getNumber();
+                        String email = barcode.getContactInfo().getEmails().get(0).getAddress();
+                        if (!resultContact.isAdded()) {
+                            resultContact.show(fragmentManager, "QR CONTACT SCANNED");
+                        }
+                        String contact = "BEGIN:VCARD\nVERSION:3.0\nN:" + name
+                                + ";"
+                                + "\nFN:\nORG:" + company
+                                + "\nADR:;;" + address1
+                                + "\nTEL;WORK;VOICE:" + phone
+                                + "\nEMAIL;WORK;INTERNET:" + email
+                                + "\nEND:VCARD";
+                        resultContact.fetch(name, address1, company, phone, email);
+                        qrModel = new QrModel(1, date, name, false, contact);
                         break;
+
                     case Barcode.TYPE_EMAIL:
                         String address = Objects.requireNonNull(barcode.getEmail()).getAddress();
-                        String subject= barcode.getEmail().getSubject();
+                        String subject = barcode.getEmail().getSubject();
                         String body = barcode.getEmail().getBody();
                         if (!resultEmail.isAdded()) {
                             resultEmail.show(fragmentManager, "QR EMAIL SCANNED");
                         }
+                        String mail = "MATMSG:TO:" + address
+                                + ";SUB:" + subject
+                                + ";BODY:" + body + ";;";
                         resultEmail.fetch(address, subject, body);
+                        qrModel = new QrModel(2, date, address, false, mail);
+
                         break;
+
                     case Barcode.TYPE_TEXT:
                         String text = barcode.getDisplayValue();
                         if (!resultText.isAdded()) {
-                            resultText.show(fragmentManager,"QR TEXT SCANNED");
+                            resultText.show(fragmentManager, "QR TEXT SCANNED");
                         }
                         resultText.fetchText(text);
+                        qrModel = new QrModel(5, date, text, false, text);
                         break;
+
                     case Barcode.TYPE_SMS:
                         String phoneNumber = Objects.requireNonNull(barcode.getSms()).getPhoneNumber();
                         String message = barcode.getSms().getMessage();
-                        if(!resultMessage.isAdded()) {
+                        if (!resultMessage.isAdded()) {
                             resultMessage.show(fragmentManager, "QR MESSAGE SCANNED");
                         }
                         resultMessage.fetch(phoneNumber, message);
+                        String sms = "SMSTO:" + phoneNumber + ":" + message;
+                        qrModel = new QrModel(3, date, phoneNumber, false, sms);
                         break;
+
                     case Barcode.TYPE_PHONE:
                         String phoneNum = Objects.requireNonNull(barcode.getPhone()).getNumber();
-                        if (!resultPhoneNumber.isAdded()){
-                            resultPhoneNumber.show(fragmentManager,"QR PHONE SCANNED");
+                        if (!resultPhoneNumber.isAdded()) {
+                            resultPhoneNumber.show(fragmentManager, "QR PHONE SCANNED");
                         }
                         resultPhoneNumber.fetch(phoneNum);
+                        qrModel = new QrModel(6, date, phoneNum, false, phoneNum);
                         break;
-                    case Barcode.TYPE_CONTACT_INFO:
-                        String name = Objects.requireNonNull(Objects.requireNonNull(barcode.getContactInfo()).getName()).getFormattedName();
-                        String address1 = Arrays.toString(barcode.getContactInfo().getAddresses().get(0).getAddressLines()) ;
-                        String company = Objects.requireNonNull(barcode.getContactInfo().getOrganization());
-                        String phone = barcode.getContactInfo().getPhones().get(0).getNumber();
-                        String email = barcode.getContactInfo().getEmails().get(0).getAddress();
-                        if (!resultContact.isAdded()){
-                            resultContact.show(fragmentManager,"QR CONTACT SCANNED");
-                        }
-                        resultContact.fetch(name, address1,company, phone,email);
+
                     default:
                         if (!resultDefault.isAdded()) {
                             resultDefault.show(fragmentManager, "QR SCANNED");
                         }
                         resultDefault.fetch(rawValue);
+                        qrModel = new QrModel(8, date, rawValue, false, rawValue);
                 }
+                //Add qr model to database
+                DatabaseHelper1 db = new DatabaseHelper1(MainActivity.getAppContext());
+                db.add(qrModel);
             }
         }
     }

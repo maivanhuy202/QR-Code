@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/one_item"
     android:layout_width="440dp"
     android:layout_height="100dp">
 
@@ -26,11 +27,13 @@
         android:layout_height="36dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
-        android:text="Date Time"
         android:foregroundGravity="center"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
+        android:text="Date Time"
+        android:textColor="@color/black"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageViewLogo"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,10 +42,22 @@
         android:layout_width="197dp"
         android:layout_height="33dp"
         android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:layout_marginTop="10dp"
         android:text="Title"
+        android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/imageViewLogo"
         app:layout_constraintTop_toBottomOf="@+id/textViewTime" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="438dp"
+        android:layout_height="1dp"
+
+        android:layout_marginTop="5dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

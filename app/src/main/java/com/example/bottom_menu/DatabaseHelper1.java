@@ -11,23 +11,23 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper1 extends SQLiteOpenHelper {
     public static final String COLUMN_QR_CONTENT = "QR_CONTENT";
-    public static final String QR_TABLE = "QR_TABLE";
+    public static final String QR_TABLE = "QR_SCAN_TABLE";
     public static final String COLUMN_QR_IS_FAVORITE = "QR_isFAVORITE";
     public static final String COLUMN_ID = "ID";
     public static final String COLUMN_QR_TYPE = "QR_TYPE";
     private static final String COLUMN_DATE_TIME = "QR_DATE_TIME";
     private static final String COLUMN_TITLE = "QR_TITLE";
 
-    public DatabaseHelper(@Nullable Context context) {
-        super(context, "QRCODE.db", null, 1);
+    public DatabaseHelper1(@Nullable Context context) {
+        super(context, "QRCODE_SCAN.db", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE " + QR_TABLE + " (" +
-                COLUMN_ID               + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COLUMN_ID              + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COLUMN_QR_TYPE          + " INTEGER , " +
                 COLUMN_DATE_TIME        + " TEXT, " +
                 COLUMN_TITLE            + " TEXT, " +

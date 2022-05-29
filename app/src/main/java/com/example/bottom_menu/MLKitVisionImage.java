@@ -1,5 +1,7 @@
 package com.example.bottom_menu;
 
+import static android.content.Context.CAMERA_SERVICE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,23 +11,29 @@ import android.hardware.camera2.CameraManager;
 import android.media.Image;
 import android.net.Uri;
 import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import android.util.SparseIntArray;
 import android.view.Surface;
+
+import androidx.annotation.RequiresApi;
 
 import com.google.mlkit.vision.common.InputImage;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
-import static android.content.Context.CAMERA_SERVICE;
-
 public class MLKitVisionImage {
 
     private static final String TAG = "MLKIT";
     private static final String MY_CAMERA_ID = "my_camera_id";
+    // [START get_rotation]
+    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
+
+    static {
+        ORIENTATIONS.append(Surface.ROTATION_0, 0);
+        ORIENTATIONS.append(Surface.ROTATION_90, 90);
+        ORIENTATIONS.append(Surface.ROTATION_180, 180);
+        ORIENTATIONS.append(Surface.ROTATION_270, 270);
+    }
 
     private void imageFromBitmap(Bitmap bitmap) {
         int rotationDegree = 0;
@@ -77,15 +85,6 @@ public class MLKitVisionImage {
             e.printStackTrace();
         }
         // [END image_from_path]
-    }
-
-    // [START get_rotation]
-    private static final SparseIntArray ORIENTATIONS = new SparseIntArray();
-    static {
-        ORIENTATIONS.append(Surface.ROTATION_0, 0);
-        ORIENTATIONS.append(Surface.ROTATION_90, 90);
-        ORIENTATIONS.append(Surface.ROTATION_180, 180);
-        ORIENTATIONS.append(Surface.ROTATION_270, 270);
     }
 
     /**

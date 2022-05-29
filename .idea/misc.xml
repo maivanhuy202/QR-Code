@@ -36,6 +36,7 @@
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_share.xml" value="0.158" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_share_white.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_title_24.xml" value="0.1765" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_unknown.xml" value="0.2495" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_wifi.xml" value="0.1785" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/ic_yes.xml" value="0.1765" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/drawable/obligatory.xml" value="0.176" />
@@ -51,8 +52,10 @@
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/fragment_create.xml" value="0.264" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/fragment_history.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/fragment_scan.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/fragment_setting.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/history_created.xml" value="0.264" />
-        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/item_list.xml" value="0.264" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/history_scanned.xml" value="0.1659111514052584" />
+        <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/item_list.xml" value="0.536" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_contact.xml" value="0.264" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_default.xml" value="0.4" />
         <entry key="..\:/Users/PC/Desktop/Huu_Hoang/QR-Code/app/src/main/res/layout/result_email.xml" value="0.264" />

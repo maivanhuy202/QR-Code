@@ -3,20 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScanFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".main.ScanFragment">
 
     <FrameLayout
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#38383A"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:background="#38383A">
 
         <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/previewView" >
+            android:layout_height="match_parent">
+
         </androidx.camera.view.PreviewView>
 
         <RelativeLayout
@@ -34,59 +35,68 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="346dp"
+                android:layout_above="@+id/image"
+                android:layout_alignParentStart="true"
+                android:background="@color/black_transparent" />
+
+            <TextView
                 android:id="@+id/tv2"
+                android:layout_width="match_parent"
+                android:layout_height="346dp"
+                android:layout_alignParentStart="true"
                 android:layout_below="@+id/image"
                 android:layout_marginBottom="-1dp"
                 android:background="@color/black_transparent" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="346dp"
-                android:layout_above="@+id/image"
-                android:background="@color/black_transparent"
-                android:layout_marginBottom="-1dp" />
 
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_above="@+id/tv2"
+                android:layout_alignTop="@+id/image"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="0dp"
                 android:layout_marginRight="0dp"
-                android:background="@color/black_transparent"
-                android:layout_toLeftOf="@+id/image" />
+                android:layout_toLeftOf="@+id/image"
+                android:background="@color/black_transparent" />
+
             <TextView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:layout_marginRight="0dp"
                 android:layout_above="@+id/tv2"
-                android:background="@color/black_transparent"
-                android:layout_toRightOf="@+id/image" />
+                android:layout_alignTop="@+id/image"
+                android:layout_marginTop="0dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="0dp"
+                android:layout_toRightOf="@+id/image"
+                android:background="@color/black_transparent" />
 
             <ImageView
                 android:id="@+id/btn_flash_on"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_flash_on"
                 android:layout_below="@+id/image"
                 android:layout_alignStart="@+id/image"
-                android:layout_marginTop="30dp" />
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_flash_on" />
 
             <ImageView
                 android:id="@+id/btn_flash_off"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_flash_off"
                 android:layout_below="@+id/image"
                 android:layout_alignStart="@+id/image"
                 android:layout_marginTop="30dp"
-                android:visibility="gone"/>
+                android:src="@drawable/ic_flash_off"
+                android:visibility="gone" />
 
             <ImageView
                 android:id="@+id/btn_gallery"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_photo_library"
                 android:layout_below="@+id/image"
                 android:layout_alignEnd="@+id/image"
-                android:layout_marginTop="30dp"/>
+                android:layout_marginTop="30dp"
+                android:src="@drawable/ic_photo_library" />
         </RelativeLayout>
 
     </FrameLayout>

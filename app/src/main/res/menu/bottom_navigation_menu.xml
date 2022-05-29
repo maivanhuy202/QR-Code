@@ -3,28 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:title="Create"
         android:id="@+id/Create"
         android:icon="@drawable/ic_qr_code"
-        app:showAsAction="ifRoom"/>
+        android:title="Create"
+        app:showAsAction="ifRoom" />
     <item
-        android:title="History"
         android:id="@+id/History"
         android:icon="@drawable/ic_history"
-        app:showAsAction="ifRoom"/>
+        android:title="History"
+        app:showAsAction="ifRoom" />
     <item
-        android:title="Scan"
         android:id="@+id/Scan"
         android:icon="@drawable/ic_qr_code_scanner"
-        app:showAsAction="ifRoom"/>
+        android:title="Scan"
+        app:showAsAction="ifRoom" />
     <item
-        android:title="Favorite"
         android:id="@+id/Favorite"
         android:icon="@drawable/ic_favorite"
-        app:showAsAction="ifRoom"/>
+        android:title="Favorite"
+        app:showAsAction="ifRoom" />
     <item
-        android:title="Settings"
         android:id="@+id/Settings"
         android:icon="@drawable/ic_settings"
-        app:showAsAction="ifRoom"/>
+        android:title="Settings"
+        app:showAsAction="ifRoom" />
 </menu>

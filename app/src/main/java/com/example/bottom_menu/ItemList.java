@@ -1,18 +1,13 @@
 package com.example.bottom_menu;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.fragment.app.Fragment;
-
-import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class ItemList extends Fragment {
     ImageView imgLogo;
@@ -32,7 +27,7 @@ public class ItemList extends Fragment {
         dateTime = view.findViewById(R.id.textViewTime);
         title.setText(strTitle);
         dateTime.setText(strDateTime);
-        switch (id){
+        switch (id) {
             case 1:
                 imgLogo.setImageDrawable(getResources().getDrawable(R.drawable.ic_contact));
                 break;
@@ -57,10 +52,10 @@ public class ItemList extends Fragment {
         }
 
 
-
         return view;
     }
-    public void setItemList(String title, String time){
+
+    public void setItemList(String title, String time) {
         strTitle = title;
         strDateTime = time;
     }

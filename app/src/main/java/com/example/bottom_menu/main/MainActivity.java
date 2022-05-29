@@ -1,26 +1,31 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.main;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
+import com.example.bottom_menu.MyApplication;
+import com.example.bottom_menu.R;
+import com.example.bottom_menu.create.CreateFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    private static Context context;
 
-    BottomNavigationView bottomNavigationView ;
+    BottomNavigationView bottomNavigationView;
     SettingFragment settingFragment = new SettingFragment();
     HistoryFragment historyFragment = new HistoryFragment();
     FavoriteFragment favoriteFragment = new FavoriteFragment();
     CreateFragment createFragment = new CreateFragment();
     ScanFragment scanFragment = new ScanFragment();
+
     @SuppressLint("NonConstantResourceId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = getApplicationContext();
         setContentView(R.layout.activity_main);
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -28,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.Scan); //set the begin tab to scan
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
+            switch (item.getItemId()) {
                 case R.id.History:
                     getSupportFragmentManager().beginTransaction().replace(R.id.container, historyFragment).commit();
                     return true;
@@ -48,5 +53,8 @@ public class MainActivity extends AppCompatActivity {
             return false;
         });
 
+    }
+    public static Context getAppContext() {
+        return context;
     }
 }

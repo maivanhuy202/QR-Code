@@ -1,4 +1,4 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.result;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,11 +17,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.bottom_menu.R;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class resultMessage extends DialogFragment {
+public class resultMessage extends BottomSheetDialogFragment {
     private String fetchPhoneNum, fetchMessage;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -40,15 +44,15 @@ public class resultMessage extends DialogFragment {
 
         btn_copy.setOnClickListener(view1 -> {
             int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
+            if (sdk < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 android.text.ClipboardManager clipboard = (android.text.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                clipboard.setText( phoneNum.getText().toString() + " " + message.getText().toString());
+                clipboard.setText(phoneNum.getText().toString() + " " + message.getText().toString());
             } else {
                 android.content.ClipboardManager clipboard = (android.content.ClipboardManager) this.requireContext().getSystemService(Context.CLIPBOARD_SERVICE);
-                android.content.ClipData clip = android.content.ClipData.newPlainText(null,phoneNum.getText().toString() + " " +message.getText().toString());
+                android.content.ClipData clip = android.content.ClipData.newPlainText(null, phoneNum.getText().toString() + " " + message.getText().toString());
                 clipboard.setPrimaryClip(clip);
             }
-            Toast.makeText(requireContext(), "Text copied into clipboard",Toast.LENGTH_LONG).show();
+            Toast.makeText(requireContext(), "Text copied into clipboard", Toast.LENGTH_LONG).show();
         });
 
         btnSend.setOnClickListener(view14 -> {
@@ -66,8 +70,8 @@ public class resultMessage extends DialogFragment {
             myIntent.setType("text/plain");
             String body = phoneNum.getText().toString().trim() + " " + message.getText().toString().trim();
             String sub = "";
-            myIntent.putExtra(Intent.EXTRA_SUBJECT,sub);
-            myIntent.putExtra(Intent.EXTRA_TEXT,body);
+            myIntent.putExtra(Intent.EXTRA_SUBJECT, sub);
+            myIntent.putExtra(Intent.EXTRA_TEXT, body);
             startActivity(Intent.createChooser(myIntent, "Share"));
         });
 
@@ -75,6 +79,7 @@ public class resultMessage extends DialogFragment {
 
         return view;
     }
+
     public void fetch(String phoneNum, String message) {
         ExecutorService executorService = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());

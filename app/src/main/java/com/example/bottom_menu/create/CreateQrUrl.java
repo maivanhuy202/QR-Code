@@ -1,4 +1,4 @@
-package com.example.bottom_menu;
+package com.example.bottom_menu.create;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,48 +12,55 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.bottom_menu.DatabaseHelper;
+import com.example.bottom_menu.QrModel;
+import com.example.bottom_menu.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
 import com.google.zxing.common.BitMatrix;
 
-public class CreateQrPhoneNumber extends Fragment {
+public class CreateQrUrl extends Fragment {
 
     ImageView close;
     Button apply;
-    EditText editPN;
+    EditText editUrl;
     ResultCreate resultCreate;
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.create_qr_phonenumber, container, false);
+        View view = inflater.inflate(R.layout.create_qr_url, container, false);
         close = (ImageView) view.findViewById(R.id.btn_ArrowBack);
-        apply = (Button)  view.findViewById(R.id.btnGenerate);
-        editPN = view.findViewById(R.id.editTextPhoneNumber);
-
+        apply = (Button) view.findViewById(R.id.btnGenerate);
+        editUrl = view.findViewById(R.id.editTextURL);
         close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
 
         apply.setOnClickListener(view12 -> {
-            String txt = editPN.getText().toString().trim();
+            String txt = editUrl.getText().toString().trim();
             MultiFormatWriter writer = new MultiFormatWriter();
+            QrModel qrModel;
+            String date = android.text.format.DateFormat.format("kk:mm:ss, dd-MM-yyyy", new java.util.Date()).toString();
             try {
-                BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250,250);
+                qrModel = new QrModel(4, date, txt, true, txt);
+                BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250, 250);
                 resultCreate = new ResultCreate(matrix);
+
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.container,resultCreate).addToBackStack(null).commit();
+                fragmentTransaction.replace(R.id.container, resultCreate).addToBackStack(null).commit();
 
 
             } catch (WriterException e) {
                 e.printStackTrace();
+                qrModel = new QrModel(-1, "null", "null", false, "ERROR");
             }
+            DatabaseHelper databaseHelper = new DatabaseHelper(this.getContext());
+            databaseHelper.add(qrModel);
 
         });
 
 
         return view;
     }
-
 }
