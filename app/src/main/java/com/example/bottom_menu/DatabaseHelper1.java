@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper1 extends SQLiteOpenHelper {
+    Context cxt;
     public static final String COLUMN_QR_CONTENT = "QR_CONTENT";
     public static final String QR_TABLE = "QR_SCAN_TABLE";
     public static final String COLUMN_QR_IS_FAVORITE = "QR_isFAVORITE";
@@ -22,12 +23,13 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
 
     public DatabaseHelper1(@Nullable Context context) {
         super(context, "QRCODE_SCAN.db", null, 1);
+        this.cxt = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String createTableStatement = "CREATE TABLE " + QR_TABLE + " (" +
-                COLUMN_ID              + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                COLUMN_ID               + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 COLUMN_QR_TYPE          + " INTEGER , " +
                 COLUMN_DATE_TIME        + " TEXT, " +
                 COLUMN_TITLE            + " TEXT, " +
@@ -39,7 +41,6 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
     }
 
     public boolean add(QrModel qrModel) {

@@ -39,7 +39,7 @@ public class CreateQrPhoneNumber extends Fragment {
         close.setOnClickListener(view1 -> requireActivity().getSupportFragmentManager().popBackStackImmediate());
 
         apply.setOnClickListener(view12 -> {
-            String txt = editPN.getText().toString().trim();
+            String txt = "tel:" + editPN.getText().toString().trim();
             MultiFormatWriter writer = new MultiFormatWriter();
             QrModel qrModel;
             String date = android.text.format.DateFormat.format("kk:mm:ss, dd-MM-yyyy", new java.util.Date()).toString();

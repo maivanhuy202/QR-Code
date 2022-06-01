@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -38,6 +39,10 @@ public class historyCreated extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         mAdapter = new ListAdapter(allQr, this.getContext());
         recyclerView.setAdapter(mAdapter);
+        recyclerView.setOnClickListener(view1 -> {
+            QrModel clicked = allQr.get(recyclerView.getChildAdapterPosition(view1));
+            databaseHelper.deleteOne(clicked);
+        });
         return view;
     }
 }

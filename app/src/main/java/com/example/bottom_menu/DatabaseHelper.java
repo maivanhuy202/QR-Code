@@ -42,6 +42,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    public boolean deleteOne(QrModel qrModel) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String queryString = "DELETE FROM " + QR_TABLE + " WHERE " + COLUMN_DATE_TIME + " = " + qrModel.getDateTime();
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()) {
+            return true;
+        }
+        return false;
+    }
+
     public boolean add(QrModel qrModel) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();

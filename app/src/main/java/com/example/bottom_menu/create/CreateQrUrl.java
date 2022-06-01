@@ -45,7 +45,6 @@ public class CreateQrUrl extends Fragment {
                 qrModel = new QrModel(4, date, txt, true, txt);
                 BitMatrix matrix = writer.encode(txt, BarcodeFormat.QR_CODE, 250, 250);
                 resultCreate = new ResultCreate(matrix);
-
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.container, resultCreate).addToBackStack(null).commit();
