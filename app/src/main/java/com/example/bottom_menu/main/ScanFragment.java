@@ -33,7 +33,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.bottom_menu.DatabaseHelper1;
-import com.example.bottom_menu.MyApplication;
 import com.example.bottom_menu.QrModel;
 import com.example.bottom_menu.R;
 import com.example.bottom_menu.result.resultContact;

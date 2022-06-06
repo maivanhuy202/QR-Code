@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bottom_menu.MyApplication;
 import com.example.bottom_menu.R;
 import com.example.bottom_menu.create.CreateFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
